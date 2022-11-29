@@ -1,2 +1,18 @@
-<h1> Recipe Show</h1>
 <h1><%= @recipe.name %></h1>
+<%= link_to menu_path do %>
+  <div class="recipe_card">
+    <div class="recipe_main">
+      <%= image_tag 'food.jpg' %>
+      <h2 class="recipe_title">Aujourd'hui</h2>
+    </div>
+    <div class="recipe_description">
+      <h2><%= @recipe.name %></h2>
+      <h3>Ingrédients :</h3>
+      <ul>
+        <% @recipe.ingredients.each do |ingredient|%>
+          <li><%= "#{RecipeIngredient.find(ingredient.id).quantity} #{ingredient.unit} de #{ingredient.name}" %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>
