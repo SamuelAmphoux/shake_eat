@@ -1,24 +1,38 @@
-<h1>Menu Show</h1>
+<h1>Menu</h1>
 
 <%# <%= link_to "Lock",  menu_menu_recipes_path, method: "POST" %>
 
-<%= link_to menu_menu_recipes_path(@menu), data: {turbo_method: :post} do %>
-  <p>Bouton de lock</p>
-<% end %>
-
 <%# <%= link_to "Unlock", menu_menu_recipe_path, method: "DELETE" %>
-
-<%= link_to menu_menu_recipe_path(@menu), data: {turbo_method: :delete} do %>
-  <p>Bouton de unlock</p>
-<% end %>
 
 <%# Détails d'une recipe %>
 
 <%# Itération sur @recipes %>
 
-<%= link_to "Détails #{Recipe.find(2).name}", recipe_path(Recipe.find(2)) %>
-
-
 <%# Valider la sélection de recettes/le menu %>
 
-<%= link_to "Valider le menu/Générer la liste de courses", menu_menu_recipes_create_all_path(@menu) %>
+<% @recipes.first(14).each do |recipe| %>
+  <%= link_to recipe_path(recipe) do %>
+  <!-- Si click sur le cadenas alors déclencher l'action create dans le menurecipe
+  controller et passer le cadenas en verrouillé -->
+    <div class="recipe_card">
+      <div class="recipe_main">
+        <div class="recipe_lock">
+          <i class="fas fa-lock"></i>
+        </div>
+        <%= image_tag 'food.jpg' %>
+        <h2 class="recipe_title"><%= recipe.name %></h2>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+<%= link_to menu_menu_recipes_create_all_path(@menu) do %>
+  <a href="login.html" class="btn-primary">
+    <p class="btn-text">Generate your list</p>
+    <div class="round_btn">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+      </svg>
+    </div>
+  </a>
+<% end %>

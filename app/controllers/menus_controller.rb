@@ -2,6 +2,7 @@ class MenusController < ApplicationController
   def show
     # @recipes = Recipe.where => return une liste en fonction des settings
     @menu = Menu.find(params[:id])
+    @recipes = Recipe.all
   end
 
   def new

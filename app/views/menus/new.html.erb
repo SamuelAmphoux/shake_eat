@@ -1,5 +1,9 @@
 <h1>Menu New</h1>
 
+<!-- Créer la page de setting avec les icones à cocher pour déterminer
+ les critères de recherche => va déterminer les critères d'une fonction recherche
+ qui viendra interroger notre DB-->
+
 <%= form_with model: @menu, url: menus_path, method: :post do |form| %>
   <%= form.label :budget, "Budget" %>
   <%= form.number_field :budget %>

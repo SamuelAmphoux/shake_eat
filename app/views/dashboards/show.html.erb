@@ -1,3 +1,35 @@
-<h1>Dashboard Show</h1>
+<h1>Dashboard</h1>
 
-<%= link_to "First Setup", new_menu_path %>
+<div class="double_btn">
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+  </svg>
+</div>
+
+<div class="recipe_card">
+  <div class="recipe_main">
+    <%= image_tag 'food.jpg' %>
+    <h2 class="recipe_title">Aujourd'hui</h2>
+  </div>
+  <div class="recipe_description">
+    <h2><%= Recipe.find(5).name %></h2>
+    <h3>Ingrédients :</h3>
+    <ul>
+      <% Recipe.find(5).ingredients.each do |ingredient|%>
+        <li><%= "#{RecipeIngredient.find(ingredient.id).quantity} #{ingredient.unit} de #{ingredient.name}" %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<a href='/menus/new' class="btn-primary">
+  <p class="btn-text">Generate</p>
+  <div class="round_btn">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+    </svg>
+  </div>
+</a>
