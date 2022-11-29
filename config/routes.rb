@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: "dashboards#show"
   resources :menus, only: %i[new create show] do
     resources :menu_recipes, only: %i[create destroy]
+    get "menus/:menu_id/menu_recipes", to: "menu_recipes#create_all", as: :menu_recipes_create_all
   end
   resources :recipes, only: :show
 

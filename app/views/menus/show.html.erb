@@ -17,3 +17,8 @@
 <%# Itération sur @recipes %>
 
 <%= link_to "Détails #{Recipe.find(2).name}", recipe_path(Recipe.find(2)) %>
+
+
+<%# Valider la sélection de recettes/le menu %>
+
+<%= link_to "Valider le menu/Générer la liste de courses", menu_menu_recipes_create_all_path(@menu) %>
