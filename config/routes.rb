@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "dashboards#show"
+
+  # Routes temporaires pour accéder à l'ui kit
+  get "uikit", to: "uikit#index"
+
   resources :menus, only: %i[new create show] do
     resources :menu_recipes, only: %i[create destroy]
     get "menus/:menu_id/menu_recipes", to: "menu_recipes#create_all", as: :menu_recipes_create_all
