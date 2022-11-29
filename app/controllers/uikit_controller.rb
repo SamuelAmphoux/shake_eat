@@ -1,0 +1,2 @@
+class UikitController < ApplicationController
+end
