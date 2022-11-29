@@ -1,0 +1,19 @@
+<h1>Menu Show</h1>
+
+<%# <%= link_to "Lock",  menu_menu_recipes_path, method: "POST" %>
+
+<%= link_to menu_menu_recipes_path(@menu), data: {turbo_method: :post} do %>
+  <p>Bouton de lock</p>
+<% end %>
+
+<%# <%= link_to "Unlock", menu_menu_recipe_path, method: "DELETE" %>
+
+<%= link_to menu_menu_recipe_path(@menu), data: {turbo_method: :delete} do %>
+  <p>Bouton de unlock</p>
+<% end %>
+
+<%# Détails d'une recipe %>
+
+<%# Itération sur @recipes %>
+
+<%= link_to "Détails #{Recipe.find(2).name}", recipe_path(Recipe.find(2)) %>

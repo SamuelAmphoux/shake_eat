@@ -1,0 +1,11 @@
+<h1>Menu New</h1>
+
+<%= form_with model: @menu, url: menus_path, method: :post do |form| %>
+  <%= form.label :budget, "Budget" %>
+  <%= form.number_field :budget %>
+  <%= form.label :number_of_people, "Number of People" %>
+  <%= form.number_field :number_of_people %>
+  <%= form.label :number_of_recipes, "Number of Recipes" %>
+  <%= form.number_field :number_of_recipes %>
+  <%= form.submit "Validate Settings" %>
+<% end %>
