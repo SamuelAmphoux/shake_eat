@@ -4,60 +4,61 @@
  les critères de recherche => va déterminer les critères d'une fonction recherche
  qui viendra interroger notre DB-->
 
+
 <div class="setting-overlay">
-  <div class="setting-container">
-    <div class="setting-btn-container">
-      <div class="round_btn setting-btn">
-        <%= image_tag 'svg_file/pig_3.svg' %>
-      </div>
-      <div class="round_btn setting-btn">
-        <%= image_tag 'svg_file/fish.svg' %>
-      </div>
-      <div class="round_btn setting-btn">
-        <%= image_tag 'svg_file/wheat.svg' %>
-      </div>
-      <div class="round_btn setting-btn">
-        <%= image_tag 'svg_file/meat.svg' %>
-      </div>
-      <div class="round_btn setting-btn">
-        <%= image_tag 'svg_file/milk.svg' %>
-      </div>
-      <div class="round_btn setting-btn ">
-        <%= image_tag 'svg_file/sugar.svg' %>
-      </div>
-    </div>
 
-  <%= form_with model: @menu, url: menus_path, method: :post do |form| %>
-    <div class="setting-select-container">
-      <%= image_tag 'svg_file/people.svg', class:'setting-img'%> <!-- Remplacer par placeholder dans le form-->
-      <%= form.number_field :number_of_people, class:"form_text_field" %>
-    </div>
-    <div class="setting-select-container">
-      <%= image_tag 'svg_file/dish_2.svg', class:'setting-img'%>
-      <%= form.number_field :number_of_recipes, class:"form_text_field" %> <!-- Remplacer par placeholder dans le form-->
-    </div>
-    <div class="setting-select-container">
-      <%= image_tag 'svg_file/euro.svg', class:'setting-img' %>
-      <%= form.number_field :budget, class:"form_text_field" %>
-    </div>
-  <% end %>
+    <%= form_with model: @menu, url: menus_path, class: 'setting-container', method: :post do |form| %>
 
+      <div class="setting-btn-container">
 
-    <div class="round_btn setting", style="position: relative; top: 3rem; left:5rem">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-      </svg>
-    </div>
-  </div>
+        <%= form.check_box :pork_free, style: "visibility: hidden"  %>
+        <%= form.label :pork_free, class: "round_btn setting-btn" do %>
+          <%= image_tag 'svg_file/pig_3.svg' %>
+        <% end %>
+
+        <%= form.check_box :fish_free, style: "visibility: hidden"  %>
+        <%= form.label :fish_free, class: "round_btn setting-btn" do %>
+          <%= image_tag 'svg_file/fish.svg' %>
+        <% end %>
+
+        <%= form.check_box :dairy_free, style: "visibility: hidden"  %>
+        <%= form.label :dairy_free, class: "round_btn setting-btn" do %>
+          <%= image_tag 'svg_file/wheat.svg' %>
+        <% end %>
+
+        <%= form.check_box :vegetarian, style: "visibility: hidden"  %>
+        <%= form.label :vegetarian, class: "round_btn setting-btn" do %>
+          <%= image_tag 'svg_file/meat.svg' %>
+        <% end %>
+
+        <%= form.check_box :gluten_free, style: "visibility: hidden"  %>
+        <%= form.label :gluten_free, class: "round_btn setting-btn" do %>
+          <%= image_tag 'svg_file/wheat.svg' %>
+        <% end %>
+
+        <%= form.check_box :sugar_conscious, style: "visibility: hidden"  %>
+        <%= form.label :sugar_conscious, class: "round_btn setting-btn" do %>
+          <%= image_tag 'svg_file/sugar.svg' %>
+        <% end %>
+
+      </div>
+
+      <div class="setting-select-container">
+        <%= image_tag 'svg_file/people.svg', class:'setting-img'%> <!-- Remplacer par placeholder dans le form-->
+        <%= form.number_field :number_of_people, class:"form_text_field" %>
+      </div>
+      <div class="setting-select-container">
+        <%= image_tag 'svg_file/dish_2.svg', class:'setting-img'%>
+        <%= form.number_field :number_of_recipes, class:"form_text_field" %> <!-- Remplacer par placeholder dans le form-->
+      </div>
+      <div class="setting-select-container">
+        <%= image_tag 'svg_file/euro.svg', class:'setting-img' %>
+        <%= form.number_field :budget, class:"form_text_field" %>
+      </div>
+
+      <%= button_tag '', class:"round_btn setting", style:"position: relative; top: 3rem; left:5rem" do %>
+        <%= image_tag 'svg_file/arrow.svg' %>
+      <% end %>
+
+    <% end %>
 </div>
-
-
-<%= form_with model: @menu, url: menus_path, method: :post do |form| %>
-  <%= form.label :budget, "Budget" %>
-  <%= form.number_field :budget %>
-  <%= form.label :number_of_people, "Number of People" %>
-  <%= form.number_field :number_of_people %>
-  <%= form.label :number_of_recipes, "Number of Recipes" %>
-  <%= form.number_field :number_of_recipes %>
-  <%= form.submit "Validate Settings" %>
-<% end %>
