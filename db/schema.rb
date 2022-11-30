@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_30_113131) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_30_153258) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -39,6 +39,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_30_113131) do
     t.integer "number_of_recipes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "pork_free", default: false
+    t.boolean "fish_free", default: false
+    t.boolean "dairy_free", default: false
+    t.boolean "vegetarian", default: false
+    t.boolean "gluten_free", default: false
+    t.boolean "sugar_conscious", default: false
     t.index ["user_id"], name: "index_menus_on_user_id"
   end
 

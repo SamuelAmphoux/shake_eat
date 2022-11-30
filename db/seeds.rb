@@ -94,7 +94,13 @@ puts "Creating a menu"
   user_id: @user.id,
   budget: 150,
   number_of_people: 4,
-  number_of_recipes: 4
+  number_of_recipes: 4,
+  pork_free: false,
+  fish_free: false,
+  dairy_free: false,
+  vegetarian: true,
+  gluten_free: false,
+  sugar_conscious: false
 )
 @recipes.each do |recipe|
   MenuRecipe.create!(
