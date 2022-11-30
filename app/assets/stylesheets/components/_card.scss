@@ -32,6 +32,22 @@
       text-align: center;
     }
 
+    .recipe_picto {
+      position: absolute;
+      background-color: $color-secondary;
+      top: 0.4rem;
+      right: 0.4rem;
+      height: 1.7rem;
+      padding: 0 0.4rem;
+      border-radius: 0.85rem;
+
+      * {
+        color: $color-gray;
+        height: 14px;
+        width: 14px;
+      }
+    }
+
     .recipe_lock {
       position: absolute;
       background-color: $color-secondary;
