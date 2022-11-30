@@ -1,16 +1,12 @@
 <h1>Menu</h1>
 
-<%# <%= link_to "Lock",  menu_menu_recipes_path, method: "POST" %>
+<%# TODO: <%= link_to "Lock",  menu_menu_recipes_path, method: "POST" %>
 
-<%# <%= link_to "Unlock", menu_menu_recipe_path, method: "DELETE" %>
+<%# TODO: <%= link_to "Unlock", menu_menu_recipe_path, method: "DELETE" %>
 
-<%# Détails d'une recipe %>
+<%# TODO: Valider la sélection de recettes/le menu %>
 
-<%# Itération sur @recipes %>
-
-<%# Valider la sélection de recettes/le menu %>
-
-<% @recipes.first(14).each do |recipe| %>
+<% @recipes.each do |recipe| %>
   <%= link_to recipe_path(recipe) do %>
   <!-- Si click sur le cadenas alors déclencher l'action create dans le menurecipe
   controller et passer le cadenas en verrouillé -->
@@ -19,9 +15,18 @@
         <div class="recipe_lock">
           <i class="fas fa-lock"></i>
         </div>
-        <%= image_tag 'food.jpg' %>
+        <%= image_tag(recipe.image_url) %>
         <h2 class="recipe_title"><%= recipe.name %></h2>
       </div>
+      <div class="recipe_description">
+      <h2></h2>
+      <h3>Ingredients :</h3>
+      <ul>
+        <% recipe.ingredients.each do |ingredient| %>
+        <li><%=  ingredient.name %></li>
+        <% end %>
+      </ul>
+    </div>
     </div>
   <% end %>
 <% end %>

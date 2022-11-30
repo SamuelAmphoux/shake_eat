@@ -54,7 +54,13 @@ app_key = "c18db5713a9acae377c0803ae0f745c4"
 puts "Resetting database..."
 Recipe.destroy_all
 Ingredient.destroy_all
+puts "Creating the 'yanis@gmail.com' user"
+@user = User.create!(
+  email: "yanis@gmail.com",
+  password: "password"
+)
 puts "Creating 20 recipes..."
+@recipes = []
 response = JSON.load(URI.open("#{url}random=true&app_id=#{app_id}&app_key=#{app_key}&mealType=Dinner&imageSize=LARGE"))
 response["hits"].each do |hit|
   recipe = Recipe.create!(
@@ -68,6 +74,7 @@ response["hits"].each do |hit|
     gluten_free: hit["recipe"]["healthLabels"].include?("Gluten-Free"),
     sugar_conscious: hit["recipe"]["healthLabels"].include?("Sugar-Conscious")
   )
+  @recipes << recipe
   hit["recipe"]["ingredients"].each do |ingredient|
     ingredient = Ingredient.create!(
       name: ingredient["text"],
@@ -82,5 +89,25 @@ response["hits"].each do |hit|
     )
   end
 end
+puts "Creating a menu"
+@menu = Menu.create!(
+  user_id: @user.id,
+  budget: 150,
+  number_of_people: 4,
+  number_of_recipes: 4,
+  pork_free: true,
+  fish_free: true,
+  dairy_free: false,
+  vegetarian: true,
+  gluten_free: false,
+  sugar_conscious: false
+)
+@recipes.each do |recipe|
+  MenuRecipe.create!(
+    menu_id: @menu.id,
+    recipe_id: recipe.id
+  )
+end
+puts "Menu Created!"
 puts "Finished!"
 puts Recipe.all
