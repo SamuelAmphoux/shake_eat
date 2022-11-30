@@ -44,6 +44,9 @@
 
 require "json"
 require "open-uri"
+
+# https://api.edamam.com/api/recipes/v2?type=public&random=true&app_id=50212685&app_key=c18db5713a9acae377c0803ae0f745c4&mealType=Dinner&imageSize=LARGE"
+
 url = "https://api.edamam.com/api/recipes/v2?type=public&"
 app_id = 50212685
 app_key = "c18db5713a9acae377c0803ae0f745c4"
@@ -57,7 +60,13 @@ response["hits"].each do |hit|
   recipe = Recipe.create!(
     name: hit["recipe"]["label"],
     image_url: hit["recipe"]["image"],
-    price: 0
+    price: 0,
+    pork_free: hit["recipe"]["healthLabels"].include?("Pork-Free"),
+    fish_free: hit["recipe"]["healthLabels"].include?("Fish-Free"),
+    dairy_free: hit["recipe"]["healthLabels"].include?("Dairy-Free"),
+    vegetarian: hit["recipe"]["healthLabels"].include?("Vegetarian"),
+    gluten_free: hit["recipe"]["healthLabels"].include?("Gluten-Free"),
+    sugar_conscious: hit["recipe"]["healthLabels"].include?("Sugar-Conscious")
   )
   hit["recipe"]["ingredients"].each do |ingredient|
     ingredient = Ingredient.create!(
