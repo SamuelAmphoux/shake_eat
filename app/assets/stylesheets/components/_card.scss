@@ -1,11 +1,12 @@
 .recipe_card {
-  background-color: $color-secondary;
-  border-radius: 5.3px;
-  color: $color-gray;
+  background-color: #F9E9CF;
+  border-radius: 16px;
+  color: #605e5e;
   font-family: 'Open Sans', sans-serif;
   position: relative;
-  margin: 10.6px;
   overflow: hidden;
+  height: 60vh;
+  margin-top: 20px;
 
   .recipe_main {
     img {
@@ -25,11 +26,12 @@
       margin-bottom: 0px;
       font-size: 20px;
       font-weight: 800;
-      background-color: $color-secondary;
+      background-color: $orange;
       border-radius: 26.6px 0 0 0;
       min-width: 50%;
       float: right;
       text-align: center;
+      color: $color-secondary;
     }
 
     .recipe_picto {
@@ -62,10 +64,10 @@
   }
 
   .recipe_description {
-    padding: 3.3px;
     font-size: 0.6rem;
     margin: 24px 5.3px 0 0;
     line-height: 21.3px;
+    margin: 20px 10px;
   }
 }
 
