@@ -1,8 +1,56 @@
-<h1>Menu New</h1>
+<h1>Setting params</h1>
 
 <!-- Créer la page de setting avec les icones à cocher pour déterminer
  les critères de recherche => va déterminer les critères d'une fonction recherche
  qui viendra interroger notre DB-->
+
+<div class="setting-overlay">
+  <div class="setting-container">
+    <div class="setting-btn-container">
+      <div class="round_btn setting-btn">
+        <%= image_tag 'svg_file/pig_3.svg' %>
+      </div>
+      <div class="round_btn setting-btn">
+        <%= image_tag 'svg_file/fish.svg' %>
+      </div>
+      <div class="round_btn setting-btn">
+        <%= image_tag 'svg_file/wheat.svg' %>
+      </div>
+      <div class="round_btn setting-btn">
+        <%= image_tag 'svg_file/meat.svg' %>
+      </div>
+      <div class="round_btn setting-btn">
+        <%= image_tag 'svg_file/milk.svg' %>
+      </div>
+      <div class="round_btn setting-btn ">
+        <%= image_tag 'svg_file/sugar.svg' %>
+      </div>
+    </div>
+
+  <%= form_with model: @menu, url: menus_path, method: :post do |form| %>
+    <div class="setting-select-container">
+      <%= image_tag 'svg_file/people.svg', class:'setting-img'%> <!-- Remplacer par placeholder dans le form-->
+      <%= form.number_field :number_of_people, class:"form_text_field" %>
+    </div>
+    <div class="setting-select-container">
+      <%= image_tag 'svg_file/dish_2.svg', class:'setting-img'%>
+      <%= form.number_field :number_of_recipes, class:"form_text_field" %> <!-- Remplacer par placeholder dans le form-->
+    </div>
+    <div class="setting-select-container">
+      <%= image_tag 'svg_file/euro.svg', class:'setting-img' %>
+      <%= form.number_field :budget, class:"form_text_field" %>
+    </div>
+  <% end %>
+
+
+    <div class="round_btn setting", style="position: relative; top: 3rem; left:5rem">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+      </svg>
+    </div>
+  </div>
+</div>
+
 
 <%= form_with model: @menu, url: menus_path, method: :post do |form| %>
   <%= form.label :budget, "Budget" %>
