@@ -15,11 +15,11 @@
     <h2 class="recipe_title">Aujourd'hui</h2>
   </div>
   <div class="recipe_description">
-    <h2><%= Recipe.find(5).name %></h2>
+    <h2><%=Recipe.last.name%></h2>
     <h3>Ingrédients :</h3>
     <ul>
-      <% Recipe.find(5).ingredients.each do |ingredient|%>
-        <li><%= "#{RecipeIngredient.find(ingredient.id).quantity} #{ingredient.unit} de #{ingredient.name}" %></li>
+      <% Recipe.last.ingredients.each do |ingredient|%>
+        <li><%=ingredient.name%></li>
       <% end %>
     </ul>
   </div>
