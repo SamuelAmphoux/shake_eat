@@ -13,6 +13,7 @@
   <div class="recipe_main">
     <%= image_tag 'food.jpg' %>
     <h2 class="recipe_title">Aujourd'hui</h2>
+    <%= render "components/icon_recipe_content", recipe: Recipe.last %>
   </div>
   <div class="recipe_description">
     <h2><%=Recipe.last.name%></h2>
