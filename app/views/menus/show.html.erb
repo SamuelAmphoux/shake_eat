@@ -5,9 +5,8 @@
 <%# TODO: <%= link_to "Unlock", menu_menu_recipe_path, method: "DELETE" %>
 
 <%# TODO: Valider la sélection de recettes/le menu %>
-
+<div class="recipe_card_container" data-controller="recipes-hidden">
 <% @recipes.each do |recipe| %>
-  <%= link_to recipe_path(recipe) do %>
   <!-- Si click sur le cadenas alors déclencher l'action create dans le menurecipe
   controller et passer le cadenas en verrouillé -->
     <div class="recipe_card">
@@ -16,23 +15,29 @@
           <i class="fas fa-lock"></i>
         </div>
         <%= image_tag(recipe.image_url) %>
-        <h2 class="recipe_title"><%= recipe.name %></h2>
-      </div>
-
+        <h2 class="recipe_title"><%= recipe.name %>
+        <button data-action="click->recipes-hidden#toggleDescription"
+                data-recipe-id="<%= recipe.id %>">
+                <i class="fa-solid fa-clipboard-list"></i>
+        </button>
+        </h2>
       <!-- Ajouter une fonction JS afin de faire afficher la descritpion ci-dessous si clique
       sur la photo => add class hidden quand click -->
-      <div class="recipe_description">
-      <h2><%= link_to "Instructions", "#{recipe.url}", target: "_blank" %></h2>
-      <h3>Ingredients :</h3>
-      <ul>
-        <% recipe.ingredients.each do |ingredient| %>
-        <li><%=  ingredient.name %></li>
-        <% end %>
-      </ul>
+      </div>
+
+      <div class="recipe_description hidden" id="description_<%= recipe.id %>">
+        <h2><%= link_to "Instructions", "#{recipe.url}", target: "_blank" %></h2>
+        <h3>Ingredients :</h3>
+        <ul>
+          <% recipe.ingredients.each do |ingredient| %>
+            <li><%= ingredient.name %></li>
+          <% end %>
+        </ul>
+      </div>
     </div>
-    </div>
-  <% end %>
 <% end %>
+</div>
+
 
 <%= link_to menu_menu_recipes_create_all_path(@menu) do %>
   <a href="login.html" class="btn-primary">

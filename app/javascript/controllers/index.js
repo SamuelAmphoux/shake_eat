@@ -7,6 +7,8 @@ import { application } from "./application"
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
-/* import IconController from "./icon_controller"
-application.register("icon", IconController)
- */
+import InactiveIconsClassController from "./inactive_icons_class_controller"
+application.register("inactive-icons-class", InactiveIconsClassController)
+
+import RecipesHiddenController from "./recipes_hidden_controller"
+application.register("recipes-hidden", RecipesHiddenController)
