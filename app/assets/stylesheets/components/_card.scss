@@ -5,8 +5,6 @@
   font-family: 'Open Sans', sans-serif;
   position: relative;
   overflow: hidden;
-  height: 60vh;
-  margin-top: 20px;
 
   .recipe_main {
     img {
@@ -69,6 +67,7 @@
     margin: 24px 5.3px 0 0;
     line-height: 21.3px;
     margin: 20px 10px;
+
   }
 }
 
@@ -76,6 +75,7 @@
   min-height: 21rem;
   width: 96%;
   position: relative;
+
   .recipe_card {
     position: absolute;
     width: 90%;
