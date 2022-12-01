@@ -1,0 +1,58 @@
+.market_card {
+  margin-bottom: 24rem;
+  background-color: $color-primary;
+  position: relative;
+  margin: 1.3rem;
+  border-radius: 1rem;
+  overflow: hidden;
+
+  img {
+    position: relative;
+    height: 7rem;
+    width: 30%;
+    float: left;
+    object-fit: cover;
+    margin-right: 0.7rem;
+  }
+
+  .market_main {
+    position: relative;
+    height: 7rem;
+    right: 0.3rem;
+
+    * {
+      position: relative;
+    }
+
+    .market_title {
+      padding-top: 4px;
+    }
+
+    .market_description {
+      font-size: 1rem;
+    }
+
+    .market_weight {
+      font-size: 1rem;
+      top: 4px;
+      right: 8px;
+      position: absolute;
+    }
+
+    .market_price_kg {
+      top: 24px;
+      right: 5px;
+      position: absolute;
+      font-size: 0.8rem;
+    }
+
+    .market_price {
+      position: absolute;
+      bottom: 0px;
+      right: 3px;
+      background-color: $color-secondary;
+      border-radius: 0.5rem;
+      padding: 0.1rem 0.5rem;
+    }
+  }
+}

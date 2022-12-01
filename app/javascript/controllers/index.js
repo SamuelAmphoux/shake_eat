@@ -12,3 +12,6 @@ application.register("inactive-icons-class", InactiveIconsClassController)
 
 import RecipesHiddenController from "./recipes_hidden_controller"
 application.register("recipes-hidden", RecipesHiddenController)
+
+import LocksController from "./locks_controller"
+application.register("locks", LocksController)
