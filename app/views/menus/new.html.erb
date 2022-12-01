@@ -5,14 +5,19 @@
  qui viendra interroger notre DB-->
 
 
-<div class="setting-overlay">
+<div class="setting-overlay" data-controller="icon">
 
     <%= form_with model: @menu, url: menus_path, class: 'setting-container', method: :post do |form| %>
 
       <div class="setting-btn-container">
 
-        <%= form.check_box :pork_free, style: "visibility: hidden"  %>
-        <%= form.label :pork_free, class: "round_btn setting-btn" do %>
+        <%= form.check_box :pork_free, style: "visibility: hidden", data: {
+          icon_target:"checkbox",
+        } %>
+        <%= form.label :pork_free, class: "round_btn setting-btn", data: {
+          icon_target: "icons-class",
+          action: "click->icon#toggleInactiveClass",
+        } do %>
           <%= image_tag 'svg_file/pig_3.svg' %>
         <% end %>
 
@@ -23,7 +28,7 @@
 
         <%= form.check_box :dairy_free, style: "visibility: hidden"  %>
         <%= form.label :dairy_free, class: "round_btn setting-btn" do %>
-          <%= image_tag 'svg_file/wheat.svg' %>
+          <%= image_tag 'svg_file/milk.svg' %>
         <% end %>
 
         <%= form.check_box :vegetarian, style: "visibility: hidden"  %>
