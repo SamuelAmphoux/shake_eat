@@ -2,7 +2,6 @@ class MenusController < ApplicationController
   def show
     # @recipes = Recipe.where => return une liste en fonction des settings
     @menu = Menu.find(params[:id])
-
     @recipes = Recipe.where(["pork_free = ? AND fish_free = ? AND dairy_free = ? AND vegetarian = ? AND gluten_free = ? AND sugar_conscious = ?",
       @menu.pork_free, @menu.fish_free, @menu.dairy_free, @menu.vegetarian, @menu.gluten_free, @menu.sugar_conscious])
   end
@@ -25,6 +24,6 @@ class MenusController < ApplicationController
   private
 
   def menu_params
-    params.require(:menu).permit(:bugdet, :number_of_people, :number_of_recipes)
+    params.require(:menu).permit(:bugdet, :number_of_people, :number_of_recipes, :pork_free, :fish_free, :dairy_free, :vegetarian, :gluten_free, :sugar_conscious)
   end
 end
