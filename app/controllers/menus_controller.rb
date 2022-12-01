@@ -24,6 +24,6 @@ class MenusController < ApplicationController
   private
 
   def menu_params
-    params.require(:menu).permit(:bugdet, :number_of_people, :number_of_recipes)
+    params.require(:menu).permit(:bugdet, :number_of_people, :number_of_recipes, :pork_free, :fish_free, :dairy_free, :vegetarian, :gluten_free, :sugar_conscious)
   end
 end
