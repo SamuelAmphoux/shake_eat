@@ -63,11 +63,15 @@
   }
 
   .recipe_description {
+    height: 100%;
     font-size: 0.6rem;
-    margin: 24px 5.3px 0 0;
+    // margin: 24px 5.3px 0 0;
     line-height: 21.3px;
-    margin: 20px 10px;
 
+    &.hidden {
+      transition: 0.3s ease-in;
+      height: 0;
+    }
   }
 }
 

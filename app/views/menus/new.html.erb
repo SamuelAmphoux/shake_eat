@@ -5,30 +5,33 @@
  qui viendra interroger notre DB-->
 
 
-<div class="setting-overlay" data-controller="icon">
+<div class="setting-overlay">
 
     <%= form_with model: @menu, url: menus_path, class: 'setting-container', method: :post do |form| %>
 
-      <div class="setting-btn-container">
+      <div class="setting-btn-container"  data-controller="inactive-icons-class">
 
-        <%= form.check_box :pork_free, style: "visibility: hidden", data: {
-          icon_target:"checkbox",
-        } %>
+        <%= form.check_box :pork_free, style: "visibility: hidden" %>
         <%= form.label :pork_free, class: "round_btn setting-btn", data: {
-          icon_target: "icons-class",
-          action: "click->icon#toggleInactiveClass",
+          action: "click->inactive-icons-class#toggleInactiveClass"
         } do %>
           <%= image_tag 'svg_file/pig_3.svg' %>
         <% end %>
 
         <%= form.check_box :fish_free, style: "visibility: hidden"  %>
-        <%= form.label :fish_free, class: "round_btn setting-btn" do %>
-          <%= image_tag 'svg_file/fish.svg' %>
+        <%= form.label :fish_free, class: "round_btn setting-btn", data: {
+          action: "click->inactive-icons-class#toggleInactiveClass",
+        } do %>
+          <%= image_tag 'svg_file/fish.svg'%>
         <% end %>
 
         <%= form.check_box :dairy_free, style: "visibility: hidden"  %>
-        <%= form.label :dairy_free, class: "round_btn setting-btn" do %>
-          <%= image_tag 'svg_file/milk.svg' %>
+        <%= form.label :dairy_free, class: "round_btn setting-btn", data: {
+          inactive_icons_class_target: "icon"
+        } do %>
+          <%= image_tag 'svg_file/milk.svg', data: {
+            action: "click->inactive-icons-class#toggleInactiveClass"
+          } %>
         <% end %>
 
         <%= form.check_box :vegetarian, style: "visibility: hidden"  %>
