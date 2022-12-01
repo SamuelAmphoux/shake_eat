@@ -2,7 +2,8 @@ class MenusController < ApplicationController
   def show
     # @recipes = Recipe.where => return une liste en fonction des settings
     @menu = Menu.find(params[:id])
-    @recipes = Recipe.all
+    @recipes = Recipe.where(["pork_free = ? AND fish_free = ? AND dairy_free = ? AND vegetarian = ? AND gluten_free = ? AND sugar_conscious = ?",
+      @menu.pork_free, @menu.fish_free, @menu.dairy_free, @menu.vegetarian, @menu.gluten_free, @menu.sugar_conscious])
   end
 
   def new
