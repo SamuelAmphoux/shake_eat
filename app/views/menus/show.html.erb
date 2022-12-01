@@ -19,7 +19,7 @@
         <h2 class="recipe_title"><%= recipe.name %></h2>
       </div>
       <div class="recipe_description">
-      <h2></h2>
+      <h2><%= link_to "Instructions", "#{recipe.url}", target: "_blank" %></h2>
       <h3>Ingredients :</h3>
       <ul>
         <% recipe.ingredients.each do |ingredient| %>

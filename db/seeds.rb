@@ -66,6 +66,7 @@ response["hits"].each do |hit|
   recipe = Recipe.create!(
     name: hit["recipe"]["label"],
     image_url: hit["recipe"]["image"],
+    url: hit["recipe"]["url"],
     price: 0,
     pork_free: hit["recipe"]["healthLabels"].include?("Pork-Free"),
     fish_free: hit["recipe"]["healthLabels"].include?("Fish-Free"),
