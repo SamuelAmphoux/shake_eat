@@ -8,7 +8,8 @@ app_id = 50212685
 app_key = "c18db5713a9acae377c0803ae0f745c4"
 
 #Utils
-
+@found = 0
+@not_found = 0
 def getPrice(ingredient)
   ingredient.gsub!(/\d+[A-Z]*/, "")
   ingredient.gsub!(" ", "+")
