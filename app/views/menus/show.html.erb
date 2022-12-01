@@ -1,30 +1,48 @@
 <h1>Menu</h1>
 
-<%# <%= link_to "Lock",  menu_menu_recipes_path, method: "POST" %>
+<%# TODO: <%= link_to "Lock",  menu_menu_recipes_path, method: "POST" %>
 
-<%# <%= link_to "Unlock", menu_menu_recipe_path, method: "DELETE" %>
+<%# TODO: <%= link_to "Unlock", menu_menu_recipe_path, method: "DELETE" %>
 
-<%# Détails d'une recipe %>
+<%# TODO: Valider la sélection de recettes/le menu %>
 
-<%# Itération sur @recipes %>
+<div class="recipe_card_container" data-controller="recipes-hidden">
 
-<%# Valider la sélection de recettes/le menu %>
+  <div data-controller="locks" data-locks-menu-id-value ="<%= @menu.id %>" >
 
-<% @recipes.first(14).each do |recipe| %>
-  <%= link_to recipe_path(recipe) do %>
-  <!-- Si click sur le cadenas alors déclencher l'action create dans le menurecipe
-  controller et passer le cadenas en verrouillé -->
-    <div class="recipe_card">
-      <div class="recipe_main">
-        <div class="recipe_lock">
-          <i class="fas fa-lock"></i>
+    <% @recipes.each do |recipe| %>
+      <!-- Si click sur le cadenas alors déclencher l'action create dans le menurecipe
+      controller et passer le cadenas en verrouillé -->
+        <div class="recipe_card">
+          <div class="recipe_main">
+          <%# <div <%= link_to menu_menu_recipes_path(@menu), method: :post, :class => "recipe_lock", :controller => "locks", :target => "icon", :action => "click->locks#switch" do %>
+            <div class="recipe_lock" data-locks-target="icon" data-action="click->locks#switch" data-method="post" data-recipe-id="<%= recipe.id %>">
+              <i class="fas fa-lock-open"></i>
+            </div>
+            <%= image_tag(recipe.image_url) %>
+            <h2 class="recipe_title"><%= recipe.name %>
+            <button data-action="click->recipes-hidden#toggleDescription"
+                    data-recipe-id="<%= recipe.id %>">
+                    <i class="fa-solid fa-clipboard-list"></i>
+            </button>
+            </h2>
+          <!-- Ajouter une fonction JS afin de faire afficher la descritpion ci-dessous si clique
+          sur la photo => add class hidden quand click -->
+          </div>
+
+          <div class="recipe_description hidden" id="description_<%= recipe.id %>">
+            <h2><%= link_to "Instructions", "#{recipe.url}", target: "_blank" %></h2>
+            <h3>Ingredients :</h3>
+            <ul>
+              <% recipe.ingredients.each do |ingredient| %>
+                <li><%= ingredient.name %></li>
+              <% end %>
+            </ul>
+          </div>
         </div>
-        <%= image_tag 'food.jpg' %>
-        <h2 class="recipe_title"><%= recipe.name %></h2>
-      </div>
-    </div>
-  <% end %>
-<% end %>
+    <% end %>
+  </div>
+</div>
 
 <%= link_to menu_menu_recipes_create_all_path(@menu) do %>
   <a href="login.html" class="btn-primary">
