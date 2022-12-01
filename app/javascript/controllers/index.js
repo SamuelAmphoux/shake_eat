@@ -6,3 +6,12 @@ import { application } from "./application"
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import InactiveIconsClassController from "./inactive_icons_class_controller"
+application.register("inactive-icons-class", InactiveIconsClassController)
+
+import RecipesHiddenController from "./recipes_hidden_controller"
+application.register("recipes-hidden", RecipesHiddenController)
+
+import LocksController from "./locks_controller"
+application.register("locks", LocksController)

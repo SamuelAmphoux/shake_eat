@@ -1,36 +1,38 @@
-<h1>Dashboard</h1>
+<div class="container">
 
-<div class="double_btn">
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-  </svg>
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-  </svg>
-</div>
-
-<div class="recipe_card">
-  <div class="recipe_main">
-    <%= image_tag 'food.jpg' %>
-    <h2 class="recipe_title">Aujourd'hui</h2>
-    <%= render "components/icon_recipe_content", recipe: Recipe.last %>
-  </div>
-  <div class="recipe_description">
-    <h2><%=Recipe.last.name%></h2>
-    <h3>Ingrédients :</h3>
-    <ul>
-      <% Recipe.last.ingredients.each do |ingredient|%>
-        <li><%=ingredient.name%></li>
-      <% end %>
-    </ul>
-  </div>
-</div>
-
-<a href='/menus/new' class="btn-primary">
-  <p class="btn-text">Generate</p>
-  <div class="round_btn">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+  <div class="double_btn">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-3 -3 30 30" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-5 -4 35 35" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
     </svg>
   </div>
-</a>
+
+  <div class="recipe_card">
+    <div class="recipe_main">
+      <%= image_tag 'food.jpg' %>
+      <h2 class="recipe_title">Aujourd'hui</h2>
+      <%= render "components/icon_recipe_content", recipe: Recipe.last %>
+   </div>
+   <div class="recipe_description">
+    <h2><%=Recipe.last.name%></h2>
+    <h3>Ingrédients :</h3>
+      <ul>
+        <% Recipe.last.ingredients.each do |ingredient|%>
+          <li><%=ingredient.name%></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <a href='/menus/new' class="btn-primary">
+    <p class="btn-text">Generate</p>
+    <div class="round_btn">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+      </svg>
+    </div>
+  </a>
+
+</div>

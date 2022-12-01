@@ -3,3 +3,9 @@
 @import "avatar";
 @import "form_legend_clear";
 @import "navbar";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
