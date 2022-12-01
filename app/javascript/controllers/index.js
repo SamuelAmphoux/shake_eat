@@ -9,3 +9,6 @@ application.register("controller", ControllerController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import LocksController from "./locks_controller"
+application.register("locks", LocksController)
