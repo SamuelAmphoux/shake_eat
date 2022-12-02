@@ -36,6 +36,12 @@ class MenusController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+
+  end
+
+  def grocery_list
+    @menu = Menu.find(params[:menu_id])
+    @ingredients = @menu.recipe_ingredients.all
   end
 
   private
