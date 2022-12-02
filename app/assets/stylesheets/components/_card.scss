@@ -5,6 +5,7 @@
   font-family: 'Open Sans', sans-serif;
   position: relative;
   overflow: hidden;
+  margin-top: 1.2rem;
 
   .recipe_main {
     img {
@@ -72,6 +73,18 @@
       transition: 0.3s ease-in;
       height: 0;
     }
+  }
+}
+
+.recipe_card_container {
+  text-align: center;
+
+  h1 {
+    margin-top: 0.5rem;
+    color: #EF6B22;
+    font-size: bold;
+    font-style: initial;
+    font-weight: bolder;
   }
 }
 
