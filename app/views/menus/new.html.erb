@@ -1,11 +1,11 @@
-<h1>Setting params</h1>
-
 <!-- Créer la page de setting avec les icones à cocher pour déterminer
  les critères de recherche => va déterminer les critères d'une fonction recherche
  qui viendra interroger notre DB-->
 
 
 <div class="setting-overlay">
+<!-- créer une modale pour afficher le détail des icones qui apparait lors du hover
+quand hover active la classe active  -->
 
     <%= form_with model: @menu, url: menus_path, class: 'setting-container', method: :post do |form| %>
 
@@ -27,25 +27,29 @@
 
         <%= form.check_box :dairy_free, style: "visibility: hidden"  %>
         <%= form.label :dairy_free, class: "round_btn setting-btn", data: {
-          inactive_icons_class_target: "icon"
+          action: "click->inactive-icons-class#toggleInactiveClass",
         } do %>
-          <%= image_tag 'svg_file/milk.svg', data: {
-            action: "click->inactive-icons-class#toggleInactiveClass"
-          } %>
+          <%= image_tag 'svg_file/milk.svg'%>
         <% end %>
 
         <%= form.check_box :vegetarian, style: "visibility: hidden"  %>
-        <%= form.label :vegetarian, class: "round_btn setting-btn" do %>
+        <%= form.label :vegetarian, class: "round_btn setting-btn", data: {
+          action: "click->inactive-icons-class#toggleInactiveClass",
+        } do %>
           <%= image_tag 'svg_file/meat.svg' %>
         <% end %>
 
         <%= form.check_box :gluten_free, style: "visibility: hidden"  %>
-        <%= form.label :gluten_free, class: "round_btn setting-btn" do %>
+        <%= form.label :gluten_free, class: "round_btn setting-btn", data: {
+          action: "click->inactive-icons-class#toggleInactiveClass",
+        } do %>
           <%= image_tag 'svg_file/wheat.svg' %>
         <% end %>
 
         <%= form.check_box :sugar_conscious, style: "visibility: hidden"  %>
-        <%= form.label :sugar_conscious, class: "round_btn setting-btn" do %>
+        <%= form.label :sugar_conscious, class: "round_btn setting-btn", data: {
+          action: "click->inactive-icons-class#toggleInactiveClass",
+        } do %>
           <%= image_tag 'svg_file/sugar.svg' %>
         <% end %>
 
@@ -64,8 +68,8 @@
         <%= form.number_field :budget, class:"form_text_field" %>
       </div>
 
-      <%= button_tag '', class:"round_btn setting", style:"position: relative; top: 3rem; left:5rem" do %>
-        <%= image_tag 'svg_file/arrow.svg' %>
+      <%= button_tag '', id:"setting-btn" do%>
+        <h2> <i class="fa-solid fa-wheelchair-move"></i> SHAKE EAT <i class="fa-solid fa-wheelchair-move"></i></h2>
       <% end %>
 
     <% end %>
