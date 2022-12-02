@@ -2,10 +2,10 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="locks"
 export default class extends Controller {
-  static targets = ["icon"]
+  static targets = ["icon", "deck", "parent"]
   static values = { menuId: Number }
   connect() {
-    console.log("Je suis dans le controller locks")
+    console.log(this.deckTarget)
   }
 
   // Change le cadenas de ouvert à fermé, et inversement
@@ -14,7 +14,7 @@ export default class extends Controller {
     const target =  event.currentTarget
     const recipeId = target.dataset.recipeId
     if (target.dataset.method === "post") {
-      this.createRecipe(recipeId, target)
+      this.createRecipe(recipeId, target);
     } else if (target.dataset.method === "destroy") {
       const menuRecipeId = target.dataset.menuRecipeId
       this.destroyRecipe(recipeId, menuRecipeId, target)
@@ -37,11 +37,12 @@ export default class extends Controller {
     .then(response => response.json())
     .then(data => {
       if (data.success) {
-        target.outerHTML = `<div class="recipe_lock" data-locks-target="icon" data-action="click->locks#switch" data-method="destroy" data-menu-recipe-id="${data.menuRecipeId}" data-recipe-id="${recipeId}">
-        <i class="fas fa-lock"></i>
-      </div>`
+        target.outerHTML = `<div class="recipe_lock" data-locks-target="icon" data-action="click->locks#switch" data-method="destroy" data-menu-recipe-id="${data.menuRecipeId}" data-recipe-id="${recipeId}"><i class="fas fa-lock"></i></div>`;
       }
-    })
+    });
+    this.deckTarget.style.cssText = "height= 21rem;"
+    this.deckTarget.innerHTML += target.parentNode.parentNode.outerHTML;
+    target.parentNode.parentNode.outerHTML = "";
   }
 
   destroyRecipe(recipeId, menuRecipeId, target) {
@@ -60,5 +61,13 @@ export default class extends Controller {
       </div>`
       }
     })
+  }
+
+  open(){
+    const tempo = this.parentTarget.innerHTML;
+
+    this.parentTarget.innerHTML = this.deckTarget.innerHTML + tempo;
+    this.deckTarget.innerHTML = "";
+    this.deckTarget.style.cssText = "height= 0px;"
   }
 }
