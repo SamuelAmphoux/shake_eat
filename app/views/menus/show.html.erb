@@ -34,12 +34,9 @@
               <i class="fas fa-lock-open"></i>
             </div>
             <%= image_tag(recipe.image_url) %>
-            <h2 class="recipe_title"><%= recipe.name %>
-            <button data-action="click->recipes-hidden#toggleDescription"
-                    data-recipe-id="<%= recipe.id %>"
-                    class="list-btn">
-                    <i class="fa-solid fa-clipboard-list"></i>
-            </button>
+            <h2 class="recipe_title"
+                data-action="click->recipes-hidden#toggleDescription"
+                data-recipe-id="<%= recipe.id %>" ><%= recipe.name %>
             </h2>
           <!-- Ajouter une fonction JS afin de faire afficher la descritpion ci-dessous si clique
           sur la photo => add class hidden quand click -->
