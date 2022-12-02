@@ -1,25 +1,21 @@
 class MenusController < ApplicationController
   def show
-    # @recipes = Recipe.where => return une liste en fonction des settings
     @menu = Menu.find(params[:id])
-    # @recipes = Recipe.all.first(5)
-    if
-      ["pork_free = ?
-      AND fish_free = ?
-      AND dairy_free = ?
-      AND vegetarian = ?
-      AND gluten_free = ?
-      AND sugar_conscious = ?",
-      @menu.pork_free == false,
-      @menu.fish_free == false,
-      @menu.dairy_free == false,
-      @menu.vegetarian == false,
-      @menu.gluten_free == false,
-      @menu.sugar_conscious == false]
-      @recipes = Recipe.all
+
+    if @menu.pork_free? == true
+      @recipes = Recipe.where(["pork_free = ? ", @menu.pork_free?])
+    elsif @menu.fish_free? == true
+      @recipes = Recipe.where(["fish_free = ?", @menu.fish_free?])
+    elsif @menu.vegetarian? == true
+      @recipes = Recipe.where(["vegetarian = ?", @menu.vegetarian?])
+    elsif @menu.gluten_free? == true
+      @recipes = Recipe.where(["gluten_free = ?", @menu.gluten_free?])
+    elsif @menu.sugar_conscious? == true
+      @recipes = Recipe.where(["sugar_conscious = ?", @menu.sugar_conscious?])
+    elsif @menu.dairy_free? == true
+      @recipes = Recipe.where(["dairy_free = ?", @menu.dairy_free?])
     else
-      @recipes = Recipe.where(["pork_free = ? AND fish_free = ? AND dairy_free = ? AND vegetarian = ? AND gluten_free = ? AND sugar_conscious = ?",
-      @menu.pork_free, @menu.fish_free, @menu.dairy_free, @menu.vegetarian, @menu.gluten_free, @menu.sugar_conscious])
+      @recipes = Recipe.all
     end
   end
 
@@ -41,7 +37,16 @@ class MenusController < ApplicationController
   private
 
   def menu_params
-    params.require(:menu).permit(:budget, :number_of_people, :number_of_recipes,
-      :pork_free, :fish_free, :dairy_free, :vegetarian, :gluten_free, :sugar_conscious)
+    params.require(:menu).permit(
+      :budget,
+      :number_of_people,
+      :number_of_recipes,
+      :pork_free,
+      :fish_free,
+      :dairy_free,
+      :vegetarian,
+      :gluten_free,
+      :sugar_conscious
+    )
   end
 end
