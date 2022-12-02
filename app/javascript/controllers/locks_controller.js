@@ -40,7 +40,7 @@ export default class extends Controller {
         target.outerHTML = `<div class="recipe_lock" data-locks-target="icon" data-action="click->locks#switch" data-method="destroy" data-menu-recipe-id="${data.menuRecipeId}" data-recipe-id="${recipeId}"><i class="fas fa-lock"></i></div>`;
       }
     });
-    this.deckTarget.style.cssText = "height= 21rem;"
+    this.deckTarget.classList.add('active');
     this.deckTarget.innerHTML += target.parentNode.parentNode.outerHTML;
     target.parentNode.parentNode.outerHTML = "";
   }
@@ -65,9 +65,8 @@ export default class extends Controller {
 
   open(){
     const tempo = this.parentTarget.innerHTML;
-
     this.parentTarget.innerHTML = this.deckTarget.innerHTML + tempo;
     this.deckTarget.innerHTML = "";
-    this.deckTarget.style.cssText = "height= 0px;"
+    this.deckTarget.classList.remove('active')
   }
 }
