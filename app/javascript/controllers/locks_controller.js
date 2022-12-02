@@ -11,16 +11,17 @@ export default class extends Controller {
   // Change le cadenas de ouvert à fermé, et inversement
   switch(event) {
     event.preventDefault();
-    const recipeId = event.currentTarget.dataset.recipeId
-    if (event.currentTarget.dataset.method === "post") {
-      this.createRecipe(recipeId)
-    } else if (event.currentTarget.dataset.method === "destroy") {
-      const menuRecipeId = event.currentTarget.dataset.menuRecipeId
-      this.destroyRecipe(recipeId, menuRecipeId)
+    const target =  event.currentTarget
+    const recipeId = target.dataset.recipeId
+    if (target.dataset.method === "post") {
+      this.createRecipe(recipeId, target)
+    } else if (target.dataset.method === "destroy") {
+      const menuRecipeId = target.dataset.menuRecipeId
+      this.destroyRecipe(recipeId, menuRecipeId, target)
     }
   }
 
-  createRecipe(recipeId) {
+  createRecipe(recipeId, target) {
     fetch(`/menus/${this.menuIdValue}/menu_recipes`, {
       method: "POST",
       headers: {
@@ -36,14 +37,14 @@ export default class extends Controller {
     .then(response => response.json())
     .then(data => {
       if (data.success) {
-        this.iconTarget.outerHTML = `<div class="recipe_lock" data-locks-target="icon" data-action="click->locks#switch" data-method="destroy" data-menu-recipe-id="${data.menuRecipeId}" data-recipe-id="${recipeId}">
+        target.outerHTML = `<div class="recipe_lock" data-locks-target="icon" data-action="click->locks#switch" data-method="destroy" data-menu-recipe-id="${data.menuRecipeId}" data-recipe-id="${recipeId}">
         <i class="fas fa-lock"></i>
       </div>`
       }
     })
   }
 
-  destroyRecipe(recipeId, menuRecipeId) {
+  destroyRecipe(recipeId, menuRecipeId, target) {
     fetch(`/menu_recipes/${menuRecipeId}`, {
       method: "DELETE",
       headers: {
@@ -54,7 +55,7 @@ export default class extends Controller {
     .then(response => response.json())
     .then(data => {
       if (data.success) {
-        this.iconTarget.outerHTML = `<div class="recipe_lock" data-locks-target="icon" data-action="click->locks#switch" data-method="post" data-recipe-id="${recipeId}">
+        target.outerHTML = `<div class="recipe_lock" data-locks-target="icon" data-action="click->locks#switch" data-method="post" data-recipe-id="${recipeId}">
         <i class="fas fa-lock-open"></i>
       </div>`
       }
