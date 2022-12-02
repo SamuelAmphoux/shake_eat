@@ -58,10 +58,9 @@ def getPrice(ingredient)
   doc = JSON.load(URI.open(url))
   ingredient.gsub!(" ", "+")
   p url
-  if (doc["results"].empty? || doc["results"][0]["items"][0]["name"] == "ASDA Finely Sliced Honey Roast Dry Cured Ham") && ingredient.include?("+")
-    p "okoko"
+  if (doc["results"].nil? || doc["results"][0]["items"][0]["name"] == "ASDA Finely Sliced Honey Roast Dry Cured Ham") && ingredient.include?("+")
     getPrice(ingredient.split("+").sort_by {|x| x.length}.last)
-  elsif doc["results"].empty? || doc["results"][0]["items"][0]["name"] == "ASDA Finely Sliced Honey Roast Dry Cured Ham"
+  elsif doc["results"].nil? || doc["results"][0]["items"][0]["name"] == "ASDA Finely Sliced Honey Roast Dry Cured Ham"
     return 0
   end
 
@@ -93,7 +92,6 @@ def getPrice(ingredient)
     end
   end
   if ingredient.include?("+")
-    p "okkokookkokooko"
     getPrice(ingredient.split("+").sort_by {|x| x.length}.last)
   else
     return 0
@@ -107,6 +105,7 @@ end
 puts "Resetting database..."
 Recipe.destroy_all
 Ingredient.destroy_all
+User.destroy_all
 puts "Creating the 'yanis@gmail.com' user"
 @user = User.create!(
   email: "yanis@gmail.com",
