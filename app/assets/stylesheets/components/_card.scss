@@ -89,8 +89,11 @@
   }
 }
 
+.active {
+  height: 21rem;
+}
+
 .deck_container {
-  min-height: 21rem;
   width: 96%;
   position: relative;
 
