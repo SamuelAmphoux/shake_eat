@@ -37,7 +37,7 @@ class MenusController < ApplicationController
 
   def grocery_list
     @menu = Menu.find(params[:menu_id])
-    @ingredients = @menu.recipe_ingredients.all
+    @recipe_ingredients = @menu.recipe_ingredients.all
   end
 
   private

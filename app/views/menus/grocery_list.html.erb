@@ -1,4 +1,15 @@
 <h1>Grocery List</h1>
-<% @ingredients.each do |ingredient| %>
-<p> <%= ingredient.ingredient.name %> </p>
+<% @recipe_ingredients.each do |element| %>
+  <div class="market_card">
+    <% unless element.ingredient.image_url.nil? %>
+    <%= image_tag(element.ingredient.image_url) %>
+    <% end %>
+    <div class="market_main">
+      <h2 class="market_title"> <%= element.quantity %> </h2>
+      <%# <h3 class="market_description">Used in 4 recipes</h3> %>
+      <h3 class="market_weight"><%= element.ingredient.name %></h3>
+      <h3 class="market_price_kg"><%= element.ingredient.unit_price %>€/unit</h3>
+      <h3 class="market_price">Prix</h3>
+    </div>
+  </div>
 <% end %>
