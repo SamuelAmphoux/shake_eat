@@ -1,7 +1,7 @@
 <% if !recipe.pork_free? || !recipe.vegetarian? || !recipe.fish_free? || !recipe.gluten_free? || !recipe.sugar_conscious?%>
 <div class="recipe_picto">
   <% unless recipe.pork_free?%>
-    <%= image_tag 'svg_file/pig3.svg'%>
+    <%= image_tag 'svg_file/pig_3.svg'%>
   <%end%>
   <% unless recipe.vegetarian?%>
     <%= image_tag 'svg_file/meat.svg'%>
