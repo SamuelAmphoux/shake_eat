@@ -15,12 +15,30 @@
     font-family: 'Open Sans', sans-serif;
     font-size: 2rem;
     margin: auto;
+
   }
+
   .round_btn {
     margin: auto 0.5rem;
     width: 3.3rem;
     height: 3.3rem;
   }
+}
+
+#setting-btn {
+  position: relative;
+  top: 4rem;
+  border-radius: 30px;
+  width: 15rem;
+  height: 4rem;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  background-color: #F9E9CF;
+  padding: 1rem;
+  color: orange;
+  font-weight: bold;
 }
 
 .round_btn {
@@ -79,5 +97,18 @@
       background-color: $color-secondary;
       border-radius: 0 0 0 50%;
     }
+  }
+}
+
+.list-btn {
+  background-color: transparent;
+  border: none;
+  color: white;
+  position: absolute;
+
+  .fa-clipboard-list {
+    position: absolute;
+    bottom: 0px;
+    left: 25px;
   }
 }
