@@ -3,11 +3,6 @@ require "open-uri"
 
 # https://api.edamam.com/api/recipes/v2?type=public&random=true&app_id=50212685&app_key=c18db5713a9acae377c0803ae0f745c4&mealType=Dinner&imageSize=LARGE"
 
-# reset db
-puts "Resetting database..."
-Recipe.destroy_all
-Ingredient.destroy_all
-User.destroy_all
 puts "Creating 20 recipes..."
 
 #Utils
