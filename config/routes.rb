@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   end
   resources :recipes, only: :show
   resources :menu_recipes, only: %i[destroy]
+  get "menus/:menu_id/recipe_ingredients", to: "menus#grocery_list", as: :grocery_list
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
