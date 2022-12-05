@@ -8,6 +8,10 @@
   position: relative;
   text-decoration: none;
   width: 80%;
+  z-index: 999999;
+
+  position:fixed;
+	bottom:40px;
 
   .btn-text {
     justify-content: space-between;

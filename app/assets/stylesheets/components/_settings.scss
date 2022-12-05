@@ -6,7 +6,6 @@
   padding: 1rem;
 }
 
-
 .setting-container {
   height: 60vh;
   width: 92vw;
@@ -23,13 +22,20 @@
   justify-content: center;
   flex-wrap: wrap;
   margin: 10px;
-
+  margin-top: 3rem;
 
   .round_btn.setting-btn {
     width: 75px;
     height: 75px;
     margin: 10px;
     border-radius: 100px;
+  }
+}
+
+#setting-btn {
+
+  h2 {
+    margin-bottom: 0;
   }
 }
 
@@ -48,8 +54,14 @@
   height: 3rem;
   border-radius: 45px;
   background-color: #F9E9CF;
-  margin-top: 1.5rem;
+  margin-top: 2.5rem;
   padding: 1rem;
+
+  input:focus{
+    outline-style: none;
+    caret-color: rgba(157, 157, 157, 0.686);
+    }
+
 
   .form_text_field{
     position: absolute;
@@ -68,6 +80,7 @@
     height: 2rem;
   }
 }
+
 
 .menu-bar {
   display: flex;
