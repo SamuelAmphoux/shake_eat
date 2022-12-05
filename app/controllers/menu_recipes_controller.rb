@@ -16,8 +16,8 @@ class MenuRecipesController < ApplicationController
   end
 
   def destroy
-    @menu_recipe = MenuRecipe.find(params[:id])
-    if @menu_recipe.destroy
+    @menu = Menu.find(params[:id])
+    if @menu.recipes.delete_all
       render json: {
         success: true
       }

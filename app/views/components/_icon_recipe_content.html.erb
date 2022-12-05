@@ -1,4 +1,4 @@
-<% if !recipe.pork_free? || !recipe.vegetarian? || !recipe.fish_free? || !recipe.gluten_free? || !recipe.sugar_conscious?%>
+<% if !recipe.pork_free? || !recipe.vegetarian? || !recipe.fish_free? || !recipe.gluten_free? || !recipe.sugar_conscious? || !recipe.dairy_free?%>
 <div class="recipe_picto">
   <% unless recipe.pork_free?%>
     <%= image_tag 'svg_file/pig_3.svg'%>
@@ -14,6 +14,9 @@
   <%end%>
   <% unless recipe.sugar_conscious?%>
     <%= image_tag 'svg_file/sugar.svg'%>
+  <%end%>
+  <% unless recipe.dairy_free?%>
+    <%= image_tag 'svg_file/milk.svg'%>
   <%end%>
 </div>
 <% end %>

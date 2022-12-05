@@ -9,17 +9,17 @@
     </svg>
   </div>
 
-  <div class="recipe_card">
+  <div class="recipe_card" style="margin-top: 3rem">
     <div class="recipe_main">
       <%= image_tag 'food.jpg' %>
       <h2 class="recipe_title">Aujourd'hui</h2>
-      <%= render "components/icon_recipe_content", recipe: Recipe.last %>
+      <%= render "components/icon_recipe_content", recipe: @recipe %>
    </div>
    <div class="recipe_description">
-    <h2><%=Recipe.last.name%></h2>
+    <h2><%=@recipe.name%></h2>
     <h3>Ingrédients :</h3>
       <ul>
-        <% Recipe.last.ingredients.each do |ingredient|%>
+        <% @recipe.ingredients.each do |ingredient|%>
           <li><%=ingredient.name%></li>
         <% end %>
       </ul>

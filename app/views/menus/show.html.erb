@@ -44,7 +44,7 @@
                   data-action="click->recipes-hidden#toggleDescription"
                   data-recipe-id="<%= recipe.id %>" ><%= recipe.name.truncate(25) %>
               </h2>
-              <%= render "components/icon_recipe_content", recipe: Recipe.last %>
+              <%= render "components/icon_recipe_content", recipe: recipe %>
             <!-- Ajouter une fonction JS afin de faire afficher la descritpion ci-dessous si clique
             sur la photo => add class hidden quand click -->
             </div>
