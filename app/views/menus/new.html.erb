@@ -9,6 +9,19 @@ quand hover active la classe active  -->
 
     <%= form_with model: @menu, url: menus_path, class: 'setting-container', method: :post do |form| %>
 
+      <div class="setting-select-container">
+        <%= image_tag 'svg_file/people.svg', class:'setting-img'%> <!-- Remplacer par placeholder dans le form-->
+        <%= form.number_field :number_of_people, class:"form_text_field" %>
+      </div>
+      <div class="setting-select-container">
+        <%= image_tag 'svg_file/dish_2.svg', class:'setting-img'%>
+        <%= form.number_field :number_of_recipes, class:"form_text_field" %> <!-- Remplacer par placeholder dans le form-->
+      </div>
+      <div class="setting-select-container">
+        <%= image_tag 'svg_file/euro.svg', class:'setting-img' %>
+        <%= form.number_field :budget, class:"form_text_field" %>
+      </div>
+
       <div class="setting-btn-container"  data-controller="inactive-icons-class">
 
         <%= form.check_box :pork_free, style: "visibility: hidden" %>
@@ -55,20 +68,7 @@ quand hover active la classe active  -->
 
       </div>
 
-      <div class="setting-select-container">
-        <%= image_tag 'svg_file/people.svg', class:'setting-img'%> <!-- Remplacer par placeholder dans le form-->
-        <%= form.number_field :number_of_people, class:"form_text_field" %>
-      </div>
-      <div class="setting-select-container">
-        <%= image_tag 'svg_file/dish_2.svg', class:'setting-img'%>
-        <%= form.number_field :number_of_recipes, class:"form_text_field" %> <!-- Remplacer par placeholder dans le form-->
-      </div>
-      <div class="setting-select-container">
-        <%= image_tag 'svg_file/euro.svg', class:'setting-img' %>
-        <%= form.number_field :budget, class:"form_text_field" %>
-      </div>
-
-      <%= button_tag '', id:"setting-btn" do%>
+      <%= button_tag '', id:"setting-btn" do %>
         <h2> <i class="fa-solid fa-tornado"></i></i> SHAKE EAT <i class="fa-solid fa-tornado"></i></i></h2>
       <% end %>
 
