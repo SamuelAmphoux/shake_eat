@@ -19,7 +19,7 @@
     </div>
     <div class="menu-bar-settings">
       <%= image_tag 'svg_file/euro.svg' %>
-      <p><%=@menu.budget %>€</p>
+      <p><%=@menu.budget %></p>
     </div>
   </div>
 
@@ -50,11 +50,13 @@
             </div>
 
             <div class="recipe_description hidden" id="description_<%= recipe.id %>">
-              <h2><%= link_to "Instructions", "#{recipe.url}", target: "_blank" %></h2>
-              <h3>Ingredients :</h3>
+              <h2><%= link_to "#{recipe.url}", target: "_blank" do %>
+              <i class="fa-regular fa-rectangle-list"></i></h2>
+              <% end %>
+              <h3>Ingredients</h3>
               <ul>
                 <% recipe.ingredients.each do |ingredient| %>
-                  <li><%= ingredient.name %></li>
+                  <li><%= ingredient.name.capitalize %></li>
                 <% end %>
               </ul>
             </div>

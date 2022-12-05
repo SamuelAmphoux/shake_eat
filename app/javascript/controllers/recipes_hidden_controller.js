@@ -2,10 +2,6 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="recipes-hidden"
 export default class extends Controller {
-  connect() {
-    console.log('kikou');
-
-  }
 
   toggleDescription(event) {
     event.preventDefault()

@@ -67,8 +67,28 @@
   .recipe_description {
     height: 100%;
     font-size: 0.6rem;
-    // margin: 24px 5.3px 0 0;
     line-height: 21.3px;
+
+    a {
+      text-decoration: none;
+      color:$color-gray;
+    }
+
+    li {
+      list-style-type: none;
+    }
+
+    .fa-rectangle-list{
+      position: absolute;
+      left: 2rem;
+      top: 15rem;
+    }
+
+    h2 {
+      font-size: 1rem;
+      display: flex;
+      width: 100%;
+    }
 
     &.hidden {
       transition: 0.3s ease-in;
@@ -79,6 +99,7 @@
 
 .recipe_card_container {
   text-align: center;
+  margin: 0.5rem;
 
   h1 {
     margin-top: 0.5rem;

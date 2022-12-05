@@ -5,23 +5,26 @@ export default class extends Controller {
   static targets = ["icon", "deck", "parent"]
   static values = { menuId: Number }
   connect() {
-    console.log(this.deckTarget)
+    console.log('je suis dans le controller lock')
   }
 
   // Change le cadenas de ouvert à fermé, et inversement
-  switch(event) {
+  async switch(event) {
     event.preventDefault();
     const target =  event.currentTarget
     const recipeId = target.dataset.recipeId
     if (target.dataset.method === "post") {
       this.createRecipe(recipeId, target);
+      this.deckTarget.classList.add('active');
+      this.deckTarget.innerHTML += target.parentNode.parentNode.outerHTML;
+      target.parentNode.parentNode.outerHTML = "";
     } else if (target.dataset.method === "destroy") {
       const menuRecipeId = target.dataset.menuRecipeId
       this.destroyRecipe(recipeId, menuRecipeId, target)
     }
   }
 
-  createRecipe(recipeId, target) {
+  async createRecipe(recipeId, target) {
     fetch(`/menus/${this.menuIdValue}/menu_recipes`, {
       method: "POST",
       headers: {
@@ -40,9 +43,6 @@ export default class extends Controller {
         target.outerHTML = `<div class="recipe_lock" data-locks-target="icon" data-action="click->locks#switch" data-method="destroy" data-menu-recipe-id="${data.menuRecipeId}" data-recipe-id="${recipeId}"><i class="fas fa-lock"></i></div>`;
       }
     });
-    this.deckTarget.classList.add('active');
-    this.deckTarget.innerHTML += target.parentNode.parentNode.outerHTML;
-    target.parentNode.parentNode.outerHTML = "";
   }
 
   destroyRecipe(recipeId, menuRecipeId, target) {
