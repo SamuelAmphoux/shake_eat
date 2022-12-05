@@ -42,6 +42,10 @@ class MenusController < ApplicationController
     @recipe_ingredients = @menu.recipe_ingredients.all
   end
 
+  def archive
+    @menu = Menu.find(params[:menu_id])
+  end
+
   private
 
   def menu_params
