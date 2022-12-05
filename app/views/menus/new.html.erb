@@ -7,28 +7,45 @@
 <!-- créer une modale pour afficher le détail des icones qui apparait lors du hover
 quand hover active la classe active  -->
 
-    <%= form_with model: @menu, url: menus_path, class: 'setting-container', method: :post do |form| %>
+    <%= form_with model: @menu, url: menus_path, method: :post, class:'setting-form' do |form| %>
 
+      <h4> Pour combien de personnes fais-tu les courses ?</h4>
       <div class="setting-select-container">
-        <%= image_tag 'svg_file/people.svg', class:'setting-img'%> <!-- Remplacer par placeholder dans le form-->
+        <div class="svg-img-container">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
+          </svg>
+        </div>
         <%= form.number_field :number_of_people, class:"form_text_field" %>
       </div>
+      <h4> Combien de recettes souhaites-tu préparer ?</h4>
       <div class="setting-select-container">
-        <%= image_tag 'svg_file/dish_2.svg', class:'setting-img'%>
+        <div class="svg-img-container">
+        <svg xmlns:xlink="http://www.w3.org/1999/xlink" id="Flat" fill="none"  stroke-width="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" height="48" width="48" stroke="currentColor">
+          <path d="M128,80c0,.07129-.00488.14111-.00537.21191-.00147.04932-.00147.09815-.00391.147A44.06056,44.06056,0,0,1,92,123.25781V224a8,8,0,0,1-16,0V123.25781A44.06056,44.06056,0,0,1,40.00928,80.35889c-.00244-.04883-.00244-.09766-.00391-.147C40.00488,80.14111,40,80.07129,40,80c0-.07568.00928-.14941.01123-.22461.00439-.14453.00977-.28906.022-.43457.01221-.146.03028-.29.04981-.43359.01074-.07422.01367-.14795.02588-.22266l8-48a8,8,0,1,1,15.78222,2.63086L57.44385,72H76V32a8,8,0,0,1,16,0V72h18.55615l-6.44726-38.68457a8,8,0,1,1,15.78222-2.63086l8,48c.01221.07471.01514.14844.02588.22266.01953.14355.0376.28759.04981.43359.0122.14551.01758.29.022.43457C127.99072,79.85059,128,79.92432,128,80Zm83.99268-48.1416c-.00245-.165-.01172-.33008-.02491-.49561-.00879-.1123-.019-.22363-.03271-.33447-.01709-.13818-.03858-.27637-.063-.41455-.02441-.13916-.05127-.27686-.08252-.41309-.02539-.10839-.05371-.2163-.0835-.32422-.04443-.16064-.09228-.31884-.14648-.47509-.01514-.04492-.0249-.09033-.041-.13526-.01806-.04834-.041-.09326-.05957-.14111q-.09081-.23511-.19531-.46191-.06738-.148-.14062-.292-.09888-.19335-.208-.38037c-.06445-.11181-.13037-.22168-.19971-.32959-.06592-.10156-.13476-.20019-.20508-.29883-.08447-.11914-.17041-.23584-.26123-.34912-.0664-.08349-.13574-.16406-.20507-.24463-.1001-.11523-.20166-.229-.30762-.33789-.07422-.07617-.15137-.14941-.22852-.22265-.10644-.10156-.21386-.20117-.32568-.29639-.08984-.07666-.18311-.14892-.27637-.22168-.10449-.08105-.20947-.16162-.31787-.23779-.11084-.07764-.2251-.15039-.33984-.22217-.09717-.061-.19434-.12256-.29444-.1792-.13037-.07422-.26367-.14258-.39843-.20947-.09229-.0459-.18409-.0918-.27832-.13428-.14161-.06348-.28565-.12109-.43165-.17676-.09667-.03662-.19287-.07324-.2915-.10644-.13965-.04737-.28174-.08887-.4248-.12842-.11426-.03174-.228-.06152-.34327-.08838-.12695-.02881-.25537-.05371-.38427-.07666-.14063-.02539-.28076-.04687-.42285-.06445-.10889-.01319-.21827-.02393-.32862-.03321q-.24535-.01977-.49365-.0249C204.10352,24.00684,204.05273,24,204,24c-.04834,0-.0957.00635-.14355.00732-.16407.00293-.32813.01172-.49268.02491-.11279.00879-.22461.019-.33594.03271-.13818.01709-.27588.03858-.41406.063-.13916.02441-.27686.05127-.41309.083-.10839.0249-.2163.05322-.32422.083-.16064.04394-.31884.09228-.47509.14648-.04492.01514-.09033.0249-.13526.041-.09863.03613-.1958.0791-.29394.11572-.03711.01513-.0752.02832-.11231.04394-20.60986,7.74561-37.11474,33.0293-49.05713,75.17823a398.22183,398.22183,0,0,0-11.75683,59.32812A8.00051,8.00051,0,0,0,148,168h48v56a8,8,0,0,0,16,0V32C212,31.95215,211.99365,31.90625,211.99268,31.8584Z"/>
+        </svg>
+        </div>
         <%= form.number_field :number_of_recipes, class:"form_text_field" %> <!-- Remplacer par placeholder dans le form-->
       </div>
+      <h4> Quel est ton budget ?</h4>
       <div class="setting-select-container">
-        <%= image_tag 'svg_file/euro.svg', class:'setting-img' %>
+        <div class="svg-img-container">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M14.25 7.756a4.5 4.5 0 100 8.488M7.5 10.5h5.25m-5.25 3h5.25M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
         <%= form.number_field :budget, class:"form_text_field" %>
       </div>
 
       <div class="setting-btn-container"  data-controller="inactive-icons-class">
+        <h4>Des restrictions alimentaires ?</h4>
+        <p>Sélectionne les aliments que tu souhaites EXCLURE de ton menu!</p>
 
         <%= form.check_box :pork_free, style: "visibility: hidden" %>
         <%= form.label :pork_free, class: "round_btn setting-btn", data: {
           action: "click->inactive-icons-class#toggleInactiveClass"
         } do %>
-          <%= image_tag 'svg_file/pig_3.svg' %>
+          <svg id="Icons" style="enable-background:new 0 0 4 4;" version="1.1" viewBox="0 0 32 32" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><style type="text/css">.st0{fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}</style><path class="st0" d="M24.4,25.7C22.4,26.5,20,27,17.5,27c-2,0-3.9-0.3-5.6-0.8"/><path class="st0" d="M21.9,23.4c0.6,1,1.5,1.9,2.6,2.4L25,26l1,2h3v-3c1.3-2.6,2-5.5,2-8.5v0c0-4.2-3.4-7.5-7.5-7.5h-8.2l0,0  c-2.1-1.9-4.8-3-7.7-3H7l2.4,4c-1.3,0.8-2.4,2-2.9,3.6L6,15c-0.6,1.7-2.3,2.6-4,2v4l6,2v5h3l1-3"/><path class="st0" d="M30.5,18.2c-1.1,1.1-2.8,1.1-3.9,0c-0.9-0.9-0.9-2.3,0-3.2"/><g><path d="M10,18c-0.1,0-0.1,0-0.2,0c-0.1,0-0.1,0-0.2-0.1c-0.1,0-0.1-0.1-0.2-0.1c-0.1,0-0.1-0.1-0.1-0.1c0-0.1-0.1-0.1-0.1-0.1   c0-0.1-0.1-0.1-0.1-0.2c0-0.1,0-0.1-0.1-0.2c0-0.1,0-0.1,0-0.2c0-0.3,0.1-0.5,0.3-0.7c0,0,0.1-0.1,0.1-0.1c0.1,0,0.1-0.1,0.2-0.1   c0.1,0,0.1,0,0.2-0.1c0.2,0,0.4,0,0.6,0.1c0.1,0.1,0.2,0.1,0.3,0.2c0.1,0.1,0.2,0.2,0.2,0.3c0,0.1,0.1,0.3,0.1,0.4   c0,0.1,0,0.1,0,0.2c0,0.1,0,0.1-0.1,0.2c0,0.1-0.1,0.1-0.1,0.2c0,0-0.1,0.1-0.1,0.1C10.5,17.9,10.3,18,10,18z"/></g></svg>
         <% end %>
 
         <%= form.check_box :fish_free, style: "visibility: hidden"  %>
@@ -42,7 +59,7 @@ quand hover active la classe active  -->
         <%= form.label :dairy_free, class: "round_btn setting-btn", data: {
           action: "click->inactive-icons-class#toggleInactiveClass",
         } do %>
-          <%= image_tag 'svg_file/milk.svg'%>
+          <svg id="milk" style="enable-background:new 0 0 32 32;" version="1.1" viewBox="0 0 32 32" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><path d="M26,13.9c0-0.1,0-0.1,0-0.2c0-0.1,0-0.1-0.1-0.2c0,0,0,0,0-0.1L22,6.7V3c0-0.6-0.4-1-1-1H11c-0.6,0-1,0.4-1,1v3.7l-3.9,6.7   c0,0,0,0,0,0.1c0,0.1,0,0.1-0.1,0.2c0,0.1,0,0.1,0,0.2c0,0,0,0,0,0.1V29c0,0.6,0.4,1,1,1h18c0.6,0,1-0.4,1-1L26,13.9   C26,13.9,26,13.9,26,13.9z M11,9l2.2,3.9H8.7L11,9z M15.5,12.9L12.7,8h7.7l2.8,4.9H15.5z M12,4h8v2h-8V4z M8,14.9h6V28H8V14.9z    M24,28h-8V14.9h8V28z"/><path d="M10,19h2c0.6,0,1-0.4,1-1s-0.4-1-1-1h-2c-0.6,0-1,0.4-1,1S9.4,19,10,19z"/><path d="M12,20.5h-2c-0.6,0-1,0.4-1,1s0.4,1,1,1h2c0.6,0,1-0.4,1-1S12.6,20.5,12,20.5z"/><path d="M12,24h-2c-0.6,0-1,0.4-1,1s0.4,1,1,1h2c0.6,0,1-0.4,1-1S12.6,24,12,24z"/></g></svg>
         <% end %>
 
         <%= form.check_box :vegetarian, style: "visibility: hidden"  %>
@@ -69,7 +86,10 @@ quand hover active la classe active  -->
       </div>
 
       <%= button_tag '', id:"setting-btn" do %>
-        <h2> <i class="fa-solid fa-tornado"></i></i> SHAKE EAT <i class="fa-solid fa-tornado"></i></i></h2>
+        <h2>Shake'eat</h2>
+        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-phone-vibrate-fill" viewBox="0 0 16 16">
+          <path d="M4 4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4zm5 7a1 1 0 1 0-2 0 1 1 0 0 0 2 0zM1.807 4.734a.5.5 0 1 0-.884-.468A7.967 7.967 0 0 0 0 8c0 1.347.334 2.618.923 3.734a.5.5 0 1 0 .884-.468A6.967 6.967 0 0 1 1 8c0-1.18.292-2.292.807-3.266zm13.27-.468a.5.5 0 0 0-.884.468C14.708 5.708 15 6.819 15 8c0 1.18-.292 2.292-.807 3.266a.5.5 0 0 0 .884.468A7.967 7.967 0 0 0 16 8a7.967 7.967 0 0 0-.923-3.734zM3.34 6.182a.5.5 0 1 0-.93-.364A5.986 5.986 0 0 0 2 8c0 .769.145 1.505.41 2.182a.5.5 0 1 0 .93-.364A4.986 4.986 0 0 1 3 8c0-.642.12-1.255.34-1.818zm10.25-.364a.5.5 0 0 0-.93.364c.22.563.34 1.176.34 1.818 0 .642-.12 1.255-.34 1.818a.5.5 0 0 0 .93.364C13.856 9.505 14 8.769 14 8c0-.769-.145-1.505-.41-2.182z"/>
+        </svg>
       <% end %>
 
     <% end %>
