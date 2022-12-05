@@ -1,0 +1,56 @@
+<div class="recipe_card_container" data-controller="recipes-hidden archive">
+
+  <%# TODO: Ajouter du turbo pour afficher une liste d'archives et passer de l'un à l'autre rapidement ? %>
+  <%# <div class="btn">
+    <i class="fa-solid fa-box-archive"></i>
+  </div> %>
+
+  <h1>Menu</h1>
+  <div class="menu-bar">
+    <div class="menu-bar-settings">
+    <%= image_tag 'svg_file/dish_2.svg'%>
+    <p><%=@menu.number_of_recipes%></p>
+    </div>
+    <div class="menu-bar-settings">
+      <%= image_tag 'svg_file/people.svg'%>
+      <p><%=@menu.number_of_people%></p>
+    </div>
+    <div class="menu-bar-settings">
+      <%= image_tag 'svg_file/euro.svg' %>
+      <p><%=@menu.budget %></p>
+    </div>
+  </div>
+
+    <div class="deck_container">
+
+    </div>
+
+    <div>
+      <% @menu.recipes.each do |recipe| %>
+        <!-- Si click sur le cadenas alors déclencher l'action create dans le menurecipe
+        controller et passer le cadenas en verrouillé -->
+          <div class="recipe_card">
+            <div class="recipe_main">
+              <%= image_tag(recipe.image_url) %>
+              <h2 class="recipe_title"
+                  data-action="click->recipes-hidden#toggleDescription"
+                  data-recipe-id="<%= recipe.id %>" ><%= recipe.name.truncate(25) %>
+              </h2>
+              <%= render "components/icon_recipe_content", recipe: recipe %>
+            </div>
+
+            <div class="recipe_description hidden" id="description_<%= recipe.id %>">
+              <h2><%= link_to "#{recipe.url}", target: "_blank" do %>
+              <i class="fa-regular fa-rectangle-list"></i></h2>
+              <% end %>
+              <h3>Ingredients</h3>
+              <ul>
+                <% recipe.ingredients.each do |ingredient| %>
+                  <li><%= ingredient.name.capitalize %></li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+      <% end %>
+    </div>
+</div>
