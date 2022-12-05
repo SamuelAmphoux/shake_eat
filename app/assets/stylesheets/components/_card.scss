@@ -1,11 +1,10 @@
 .recipe_card {
-  background-color: #F9E9CF;
+  background-color: $color-secondary;
   border-radius: 16px;
   color: #605e5e;
   font-family: 'Open Sans', sans-serif;
   position: relative;
   overflow: hidden;
-  margin-top: 1.2rem;
 
   .recipe_main {
     img {
@@ -20,18 +19,18 @@
 
     .recipe_title {
       position: relative;
-      padding: 6.6px;
-      height: 40.6px;
-      margin-top: -40px;
-      margin-bottom: 0px;
+      bottom: 35px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: $color-primary;
+      color: $color-secondary;
+      height: 2.2rem;
       font-size: 20px;
       font-weight: 800;
-      background-color: $orange;
       border-radius: 26.6px 0 0 0;
       min-width: 50%;
       float: right;
-      text-align: center;
-      color: $color-secondary;
     }
 
     .recipe_picto {
@@ -68,6 +67,7 @@
     height: 100%;
     font-size: 0.6rem;
     line-height: 21.3px;
+    max-height: 32vh;
 
     a {
       text-decoration: none;
@@ -103,7 +103,7 @@
 
   h1 {
     margin-top: 0.5rem;
-    color: #EF6B22;
+    color: $color-primary;
     font-size: bold;
     font-style: initial;
     font-weight: bolder;
