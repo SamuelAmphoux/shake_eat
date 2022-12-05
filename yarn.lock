@@ -660,6 +660,11 @@ serialize-javascript@^6.0.0:
   dependencies:
     randombytes "^2.1.0"
 
+shake-detector@^0.3.8:
+  version "0.3.8"
+  resolved "https://registry.yarnpkg.com/shake-detector/-/shake-detector-0.3.8.tgz#4814939d74948135c2a55d77a518a78333b70335"
+  integrity sha512-fSfCLUJOshyvsLWMfwV6VoyXU4XHuKj+stQOTd3657t6/B+ea8hKTfAPRSUZRFyp+NWb+0bU8h0DmD1nxs0QYA==
+
 shallow-clone@^3.0.0:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/shallow-clone/-/shallow-clone-3.0.1.tgz#8f2981ad92531f55035b01fb230769a40e02efa3"

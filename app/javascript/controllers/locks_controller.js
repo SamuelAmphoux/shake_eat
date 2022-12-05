@@ -3,11 +3,11 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="locks"
 
 export default class extends Controller {
-  static targets = ["icon", "deck", "parent"]
+  static targets = ["icon", "deck", "parent", "test"]
   static values = { menuId: Number }
+
   connect() {
-    console.log(this.deckTarget)
-    console.log(this.menuIdValue)
+
   }
 
   // Change le cadenas de ouvert à fermé, et inversement

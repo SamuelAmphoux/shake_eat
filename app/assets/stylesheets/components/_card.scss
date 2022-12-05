@@ -114,6 +114,9 @@
       top: 4rem;
       left: 1rem;
       visibility: visible;
+      .recipe_picto {
+        visibility: hidden;
+      }
     }
 
     &:nth-last-child(3) {
@@ -121,6 +124,9 @@
       top: 3rem;
       left: 0rem;
       visibility: visible;
+      .recipe_picto {
+        visibility: hidden;
+      }
     }
   }
 }
