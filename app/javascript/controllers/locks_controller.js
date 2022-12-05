@@ -11,7 +11,7 @@ export default class extends Controller {
   }
 
   // Change le cadenas de ouvert à fermé, et inversement
-  switch(event) {
+  async switch(event) {
     event.preventDefault();
     let target =  event.currentTarget
     const recipeId = target.dataset.recipeId
@@ -20,7 +20,7 @@ export default class extends Controller {
     }
   }
 
-  createRecipe(recipeId, target) {
+  async createRecipe(recipeId, target) {
     fetch(`/menus/${this.menuIdValue}/menu_recipes`, {
       method: "POST",
       headers: {

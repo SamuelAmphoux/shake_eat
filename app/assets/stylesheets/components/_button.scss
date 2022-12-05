@@ -1,6 +1,6 @@
 .btn-primary {
   display: flex;
-  background-color: $color-primary;
+  background-color: $color-secondary;
   height: 4rem;
   border-radius: 2rem;
   margin: 1.3rem;
@@ -15,7 +15,7 @@
 
   .btn-text {
     justify-content: space-between;
-    color: $color-secondary;
+    color: $color-primary;
     font-family: 'Open Sans', sans-serif;
     font-size: 2rem;
     margin: auto;
@@ -26,23 +26,23 @@
     margin: auto 0.5rem;
     width: 3.3rem;
     height: 3.3rem;
+    background-color: $color-primary ;
+    color: $color-secondary;
   }
 }
 
 #setting-btn {
   position: relative;
-  top: 4rem;
-  border-radius: 30px;
-  width: 15rem;
+  top: 10rem;
+  width: 20rem;
   height: 4rem;
-  display: flex;
-  align-content: center;
-  align-items: center;
-  justify-content: center;
-  background-color: #F9E9CF;
   padding: 1rem;
-  color: orange;
-  font-weight: bold;
+  border-radius: 2rem;
+  background-color: $color-secondary;
+  color: $color-primary;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 2rem;
+  margin: auto;
 }
 
 .round_btn {
