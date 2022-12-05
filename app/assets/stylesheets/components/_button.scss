@@ -1,6 +1,6 @@
 .btn-primary {
   display: flex;
-  background-color: #FB7D42;
+  background-color: $color-primary;
   height: 4rem;
   border-radius: 2rem;
   margin: 1.3rem;
@@ -8,6 +8,10 @@
   position: relative;
   text-decoration: none;
   width: 80%;
+  z-index: 999999;
+
+  position:fixed;
+	bottom:40px;
 
   .btn-text {
     justify-content: space-between;
