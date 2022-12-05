@@ -1,10 +1,13 @@
-function handleMotionEvent(event) {
-
-  var x = event.accelerationIncludingGravity.x;
-  var y = event.accelerationIncludingGravity.y;
-  var z = event.accelerationIncludingGravity.z;
-
-  // Faire quelque chose de génial.
+if (typeof DeviceMotionEvent.requestPermission === 'function') {
+  DeviceMotionEvent.requestPermission()
+    .then(permissionState => {
+      if (permissionState === 'granted') {
+        window.addEventListener('devicemotion', (event) => {
+          console.log(event.accelerationIncludingGravity)
+        });
+      }
+    })
+    .catch(console.error);
+} else {
+  // handle regular non iOS 13+ devices
 }
-
-window.addEventListener("devicemotion", handleMotionEvent, true);
