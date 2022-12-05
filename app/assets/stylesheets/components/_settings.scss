@@ -6,16 +6,17 @@
   padding: 1rem;
 }
 
-  .setting-container {
-    height: 60vh;
-    width: 92vw;
-    background-color: #ef6a22c9;
-    position: absolute;
-    border-radius: 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+
+.setting-container {
+  height: 60vh;
+  width: 92vw;
+  background-color: #ef6a22c9;
+  position: absolute;
+  border-radius: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 .setting-btn-container {
   display: flex;
