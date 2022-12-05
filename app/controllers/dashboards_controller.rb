@@ -1,6 +1,6 @@
 class DashboardsController < ApplicationController
   def show
-    @recipe = Recipe.new
+    @recipe = Recipe.all.sample
   end
 
 end
