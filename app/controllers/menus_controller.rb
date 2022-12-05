@@ -2,21 +2,21 @@ class MenusController < ApplicationController
   def show
     @menu = Menu.find(params[:id])
 
-    if @menu.pork_free? == true
-      @recipes = Recipe.where(["pork_free = ? ", @menu.pork_free?])
-    elsif @menu.fish_free? == true
-      @recipes = Recipe.where(["fish_free = ?", @menu.fish_free?])
-    elsif @menu.vegetarian? == true
-      @recipes = Recipe.where(["vegetarian = ?", @menu.vegetarian?])
-    elsif @menu.gluten_free? == true
-      @recipes = Recipe.where(["gluten_free = ?", @menu.gluten_free?])
-    elsif @menu.sugar_conscious? == true
-      @recipes = Recipe.where(["sugar_conscious = ?", @menu.sugar_conscious?])
-    elsif @menu.dairy_free? == true
-      @recipes = Recipe.where(["dairy_free = ?", @menu.dairy_free?])
-    else
-      @recipes = Recipe.all
-    end
+    @recipes = Recipe.all
+
+    @recipes = @recipes.where(["pork_free = ? ", @menu.pork_free?]) if @menu.pork_free? == true
+
+    @recipes = @recipes.where(["fish_free = ?", @menu.fish_free?]) if @menu.fish_free? == true
+
+    @recipes = @recipes.where(["vegetarian = ?", @menu.vegetarian?]) if @menu.vegetarian? == true
+
+    @recipes = @recipes.where(["gluten_free = ?", @menu.gluten_free?]) if @menu.gluten_free? == true
+
+    @recipes = @recipes.where(["sugar_conscious = ?", @menu.sugar_conscious?]) if @menu.sugar_conscious? == true
+
+    @recipes = @recipes.where(["dairy_free = ?", @menu.dairy_free?]) if @menu.dairy_free? == true
+
+    @recipes = @recipes.where(["price <= ?", @menu.budget / (@menu.number_of_people * @menu.number_of_recipes)])
   end
 
   def new
