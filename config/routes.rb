@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   end
   resources :recipes, only: :show
   resources :menu_recipes, only: %i[destroy]
+  resources :likes, only: %i[create destroy]
   get "menus/:menu_id/recipe_ingredients", to: "menus#grocery_list", as: :grocery_list
   get "menus/:menu_id/archive", to: "menus#archive", as: :menu_archive
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
