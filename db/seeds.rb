@@ -3,7 +3,7 @@ require 'open-uri'
 
 # All variables
 
-@recipe_api_url = "https://api.spoonacular.com/recipes/random?apiKey=38112ec2a1c04ddda48fae9a3e04263d&number=1&type=main_course"
+@recipe_api_url = "https://api.spoonacular.com/recipes/random?apiKey=b3e9e7b069d24dd08fcf139b2ca7124d&number=1&type=main_course"
 
 ## Utils
 
