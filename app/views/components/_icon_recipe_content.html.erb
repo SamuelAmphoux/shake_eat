@@ -1,22 +1,28 @@
 <% if !recipe.pork_free? || !recipe.vegetarian? || !recipe.fish_free? || !recipe.gluten_free? || !recipe.sugar_conscious? || !recipe.dairy_free?%>
 <div class="recipe_picto">
   <% unless recipe.pork_free?%>
-    <%= image_tag 'svg_file/pig_3.svg'%>
+    <%# <%= image_tag 'svg_file/pig_3.svg'%>
+    🐷
   <%end%>
   <% unless recipe.vegetarian?%>
-    <%= image_tag 'svg_file/meat.svg'%>
+    <%# <%= image_tag 'svg_file/meat.svg'%>
+    🍗
   <%end%>
   <% unless recipe.fish_free?%>
-    <%= image_tag 'svg_file/fish.svg'%>
+    <%# <%= image_tag 'svg_file/fish.svg'%>
+    🐟
   <%end%>
   <% unless recipe.gluten_free?%>
-    <%= image_tag 'svg_file/wheat.svg'%>
+    <%# <%= image_tag 'svg_file/wheat.svg'%>
+    🌾
   <%end%>
   <% unless recipe.sugar_conscious?%>
-    <%= image_tag 'svg_file/sugar.svg'%>
+    <%# <%= image_tag 'svg_file/sugar.svg'%>
+    🍬
   <%end%>
   <% unless recipe.dairy_free?%>
-    <%= image_tag 'svg_file/milk.svg'%>
+    <%# <%= image_tag 'svg_file/milk.svg'%>
+    🥛
   <%end%>
 </div>
 <% end %>
