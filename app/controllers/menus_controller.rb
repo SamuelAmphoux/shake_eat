@@ -34,7 +34,6 @@ class MenusController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
-
   end
 
   def grocery_list
