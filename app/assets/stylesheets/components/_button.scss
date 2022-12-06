@@ -91,3 +91,16 @@
     }
   }
 }
+
+.generate-disabled {
+  pointer-events: none;
+  background-color: grey;
+
+  .btn-text {
+    color: #a6a6a6d4;
+  }
+
+  .round_btn {
+    background-color: #8b8b8b;
+  }
+}

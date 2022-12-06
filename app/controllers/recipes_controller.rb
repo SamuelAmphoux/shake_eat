@@ -3,6 +3,10 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
   end
 
+  def more_recipes
+
+  end
+
   private
 
   def recipe_params
