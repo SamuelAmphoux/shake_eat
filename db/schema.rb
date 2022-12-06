@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_02_131707) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_06_123911) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -23,6 +23,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_02_131707) do
     t.string "image_url"
     t.float "quantity"
     t.float "price"
+  end
+
+  create_table "likes_users", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "recipe_id"
+    t.index ["recipe_id"], name: "index_likes_users_on_recipe_id"
+    t.index ["user_id"], name: "index_likes_users_on_user_id"
   end
 
   create_table "menu_recipes", force: :cascade do |t|
@@ -87,6 +94,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_02_131707) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "likes_users", "recipes"
+  add_foreign_key "likes_users", "users"
   add_foreign_key "menu_recipes", "menus"
   add_foreign_key "menu_recipes", "recipes"
   add_foreign_key "menus", "users"
