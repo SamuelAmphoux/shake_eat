@@ -26,11 +26,6 @@
 
   <div data-controller="locks" data-locks-menu-id-value ="<%= @menu.id %>">
 
-    <div class="test" data-locks-target="test">
-      toto
-    </div>
-
-
     <div class="deck_container" data-locks-target="deck" data-action="click->locks#open">
 
     </div>
@@ -42,7 +37,7 @@
           <div class="recipe_card">
             <div class="recipe_main">
             <%# <div <%= link_to menu_menu_recipes_path(@menu), method: :post, :class => "recipe_lock", :controller => "locks", :target => "icon", :action => "click->locks#switch" do %>
-              <div class="recipe_lock" data-locks-target="icon" data-action="click->locks#switch" data-method="post" data-recipe-id="<%= recipe.id %>">
+              <div class="recipe_lock" data-locks-target="icon" data-action="click->locks#switchr" data-method="post" data-recipe-id="<%= recipe.id %>">
                 <i class="fas fa-lock-open"></i>
               </div>
               <%= image_tag(recipe.image_url) %>
@@ -56,9 +51,12 @@
             </div>
 
             <div class="recipe_description hidden" id="description_<%= recipe.id %>">
-              <h2><%= link_to "#{recipe.url}", target: "_blank" do %>
+              <h2>
               <i class="fa-regular fa-rectangle-list"></i></h2>
-              <% end %>
+              <div class="recipe_like" data-locks-target="heart" data-action="click->locks#switchl" data-method="post" data-recipe-id="<%= recipe.id %>">
+                <%= image_tag "svg_file/heart_active", class: "heart_active active"%>
+                <%= image_tag "svg_file/heart_inactive", class: "heart_inactive"%>
+              </div>
               <h3>Ingredients</h3>
               <ul>
                 <% recipe.ingredients.each do |ingredient| %>
