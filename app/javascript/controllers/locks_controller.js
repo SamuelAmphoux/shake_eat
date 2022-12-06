@@ -3,6 +3,7 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="locks"
 
 export default class extends Controller {
+
   static targets = ["icon", "btn", "card", "recipes"]
   static values = { menuId: Number, recipeNumber: Number, selectedRecipes: Number}
 
