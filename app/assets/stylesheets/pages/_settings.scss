@@ -122,6 +122,9 @@
   margin-top: 0.5rem;
   position: relative;
   margin: 1rem auto;
+  overflow: hidden;
+
+  border: 2px solid #EF6B22;
 
   input:focus{
     outline-style: none;
@@ -147,7 +150,7 @@
     width: 3.3rem;;
     height: 3.3rem;;
     display: flex;
-    background-color: $color-primary;
+    background-color: $color-secondary;
     justify-content: center;
     align-items: center;
   }
