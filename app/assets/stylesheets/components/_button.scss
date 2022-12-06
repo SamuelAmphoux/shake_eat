@@ -3,7 +3,6 @@
   background-color: $color-secondary;
   height: 4rem;
   border-radius: 2rem;
-  margin: 1.3rem;
   justify-content: center;
   position: relative;
   text-decoration: none;
@@ -11,7 +10,9 @@
   z-index: 999999;
 
   position:fixed;
-	bottom:40px;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
   .btn-text {
     justify-content: space-between;
