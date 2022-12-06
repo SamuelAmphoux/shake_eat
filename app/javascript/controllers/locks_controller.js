@@ -3,50 +3,30 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="locks"
 
 export default class extends Controller {
-  static targets = ["icon", "deck", "parent", "heart"]
-  static values = { menuId: Number }
+  static targets = ["icon", "btn", "card", "recipes"]
+  static values = { menuId: Number, recipeNumber: Number, selectedRecipes: Number}
 
   connect() {
-    console.log("prout")
+    console.log(this.recipeNumberValue);
 
-  }
-
-  async switchl(e) {
-    if (e.currentTarget.children[1].classList.toggle('active')) {
-      // Remove des favoris
-      fetch(`/likes/${this.menuIdValue}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]').content
-        },
-      })
-      .then(response => response.json())
-      .then(data => {
-        if (data.success) {
-          console.log("ok");
-        }
-      })
-    }
-    if (e.currentTarget.children[0].classList.toggle('active')) {
-      for (let i = 0; i < 10; i++) {
-        // We pass the mouse coordinates to the createParticle() function
-        this.createParticle(e.clientX, e.clientY);
-      }
-    }
   }
 
   // Change le cadenas de ouvert à fermé, et inversement
-  async switchr(event) {
+  switch(event) {
     event.preventDefault();
-    let target =  event.currentTarget
+    const target =  event.currentTarget
     const recipeId = target.dataset.recipeId
     if (target.dataset.method === "post") {
-      this.createRecipe(recipeId, target);
+      this.createRecipe(recipeId, target)
+      target.parentElement.parentElement.classList.remove('unlocked')
+    } else if (target.dataset.method === "destroy") {
+      const menuRecipeId = target.dataset.menuRecipeId
+      this.destroyRecipe(recipeId, menuRecipeId, target)
+      target.parentElement.parentElement.classList.add('unlocked')
     }
   }
 
-  async createRecipe(recipeId, target) {
+  createRecipe(recipeId, target) {
     fetch(`/menus/${this.menuIdValue}/menu_recipes`, {
       method: "POST",
       headers: {
@@ -62,16 +42,32 @@ export default class extends Controller {
     .then(response => response.json())
     .then(data => {
       if (data.success) {
-        let parent = target.parentNode.parentNode
-        target.style.visibility = "hidden";
-        this.deckTarget.classList.add('active');
-        this.deckTarget.innerHTML += parent.outerHTML;
-        parent.outerHTML = "";
+        target.outerHTML = `<div class="recipe_lock" data-locks-target="icon" data-action="click->locks#switch" data-method="destroy" data-menu-recipe-id="${data.menuRecipeId}" data-recipe-id="${recipeId}">
+                              <i class="fas fa-lock"></i>
+                            </div>`;
+        this.selectedRecipesValue += 1;
+        if (this.selectedRecipesValue === this.recipeNumberValue) {
+          this.btnTarget.classList.remove('generate-disabled')
+          this.btnTarget.innerHTML = `<p class="btn-text">Get your list</p>
+          <div class="round_btn">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </div>`
+        } else if (this.selectedRecipesValue !== this.recipeNumberValue) {
+          this.btnTarget.classList.add('generate-disabled')
+          this.btnTarget.innerHTML = `<p class="btn-text">Select Recipes</p>
+          <div class="round_btn">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </div>`
+        }
       }
     });
   }
 
-  destroyRecipe() {
+  destroyRecipe(recipeId, menuRecipeId, target) {
     fetch(`/menu_recipes/${this.menuIdValue}`, {
       method: "DELETE",
       headers: {
@@ -82,65 +78,48 @@ export default class extends Controller {
     .then(response => response.json())
     .then(data => {
       if (data.success) {
-        console.log("ok");
+        target.outerHTML = `<div class="recipe_lock" data-locks-target="icon" data-action="click->locks#switch" data-method="post" data-recipe-id="${recipeId}">
+                              <i class="fas fa-lock-open"></i>
+                            </div>`;
+        this.selectedRecipesValue -= 1;
+        console.log(this.selectedRecipesValue);
+        if (this.selectedRecipesValue === this.recipeNumberValue) {
+          this.btnTarget.classList.remove('generate-disabled')
+          this.btnTarget.innerHTML = `<p class="btn-text">Get your list</p>
+          <div class="round_btn">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </div>`
+        } else if (this.selectedRecipesValue !== this.recipeNumberValue) {
+          this.btnTarget.classList.add('generate-disabled')
+          this.btnTarget.innerHTML = `<p class="btn-text">Select Recipes</p>
+          <div class="round_btn">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </div>`
+        }
       }
     })
   }
 
-  open(){
-    let tempo = this.parentTarget.innerHTML;
-    this.parentTarget.innerHTML = this.deckTarget.innerHTML.replaceAll("visibility: hidden;", "visibility: visible;") + tempo;
-    this.deckTarget.innerHTML = "";
-    this.deckTarget.classList.remove('active')
-    this.destroyRecipe();
-  }
-
-  // Particule EFFECT
-
-  createParticle = (x, y) => {
-    // Create a custom particle element
-    const particle = document.createElement('particle');
-    particle.innerHTML = ['❤','😍', '💕', '💞'][Math.floor(Math.random() * 4)];
-    particle.style.fontSize = `${Math.random() * 24 + 10}px`;
-    document.body.appendChild(particle);
-    // Append the element into the body
-
-    const size = Math.floor(Math.random() * 20 + 5);
-    // Apply the size on each particle
-    particle.style.width = `${size}px`;
-    particle.style.height = `${size}px`;
-    particle.style.position = 'absolute';
-
-    // Generate a random color in a blue/purple palette
-
-    const destinationX = x + (Math.random() - 0.5) * 2 * 75;
-    const destinationY = y + (Math.random() - 0.5) * 2 * 75;
-    particle.style.top = `${y + (Math.random() - 0.5) * 2 * 40}px`;
-    particle.style.left = `${x + (Math.random() - 0.5) * 2 * 40}px`;
-    // Store the animation in a variable because we will need it later
-    const animation = particle.animate([
-      {
-        // Set the origin position of the particle
-        // We offset the particle with half its size to center it around the mouse
-
-        transform: `translate(${x - (size / 2)}px, ${y - (size / 2)}px)`,
-        opacity: 1
+  getMoreRecipes() {
+    fetch(`/menus/${this.menuIdValue}`, {
+      headers: {
+        "Accept": "text/plain",
+        "Content-Type": "text/plain",
+        "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]').content
       },
-      {
-        // We define the final coordinates as the second keyframe
-        transform: `translate(${destinationX}px, ${destinationY}px)`,
-        opacity: 0
-      }
-    ], {
-      // Set a random duration from 500 to 1500ms
-
-      duration: 1000 + Math.random() * 1500,
-      easing: 'cubic-bezier(0, .9, .57, 1)',
-      // Delay every particle with a random value from 0ms to 200ms
-      delay: Math.random() * 500
-    });
-    animation.onfinish = () => {
-      particle.remove();
-    };
+    })
+    .then((response) => response.text())
+    .then((data) => {
+      this.cardTargets.forEach((card)=> {
+        if (card.classList.contains('unlocked')) {
+          card.remove()
+        }
+      })
+      this.recipesTarget.insertAdjacentHTML('beforeend', data)
+    })
   }
 }

@@ -1,9 +1,10 @@
 class MenusController < ApplicationController
   def show
     @menu = Menu.find(params[:id])
+    @existing_recipes = @menu.recipes
 
     @recipes = Recipe.all
-
+    @recipes = @recipes.excluding(@existing_recipes)
     @recipes = @recipes.where(["pork_free = ? ", @menu.pork_free?]) if @menu.pork_free? == true
 
     @recipes = @recipes.where(["fish_free = ?", @menu.fish_free?]) if @menu.fish_free? == true
@@ -19,6 +20,11 @@ class MenusController < ApplicationController
     @recipes = @recipes.where(["price <= ?", @menu.budget / (@menu.number_of_people * @menu.number_of_recipes)]) if @menu.budget
 
     @recipes = @recipes.sample(@menu.number_of_recipes)
+
+    respond_to do |format|
+      format.text { render partial: "recipes/recipes", formats: [:html], locals: { recipes: @recipes } }
+      format.html # index.html.erb
+    end
   end
 
   def new
