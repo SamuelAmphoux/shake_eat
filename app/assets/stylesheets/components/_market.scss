@@ -1,31 +1,32 @@
 .market_card {
   margin-bottom: 24rem;
-  background-color: $color-primary;
+  color: #434343;
   position: relative;
-  margin: 1.3rem;
-  border-radius: 1rem;
+  margin: 0rem 1rem;
   overflow: hidden;
+  padding: 1rem;
+  background-color: white;
+  margin: 3px;
 
   img {
     position: relative;
     height: 7rem;
     width: 30%;
     float: left;
-    object-fit: cover;
-    margin-right: 0.7rem;
   }
 
   .market_main {
-    position: relative;
+    display: flex;
+    flex-direction: column;
     height: 7rem;
-    right: 0.3rem;
+    align-items: flex-end;
 
     * {
       position: relative;
     }
 
     .market_title {
-      padding-top: 4px;
+      font-size: 1.5rem;
     }
 
     .market_description {
@@ -33,10 +34,7 @@
     }
 
     .market_weight {
-      font-size: 1rem;
-      top: 4px;
-      right: 8px;
-      position: absolute;
+      font-size: 1.2rem;
     }
 
     .market_price_kg {
@@ -53,6 +51,41 @@
       background-color: $color-secondary;
       border-radius: 0.5rem;
       padding: 0.1rem 0.5rem;
+      font-size: 1.5rem
     }
   }
+}
+
+.list-container {
+  margin-bottom: 4rem;
+
+  h1{
+    margin-top: 0.5rem;
+    color: #EF6B22;
+    font-size: bold;
+    font-style: initial;
+    font-weight: bolder;
+    text-align: center;
+  }
+
+  h3 {
+    margin-top: 0.5rem;
+    color: $color-gray;
+    font-size: bold;
+    font-style: initial;
+    font-weight: bolder;
+    text-align: center;
+  }
+}
+
+.total-price {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: rgba(243, 238, 220, 0.6);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(7.4px);
+  -webkit-backdrop-filter: blur(7.4px);
+  border: 1px solid rgba(243, 238, 220, 0.29);
 }
