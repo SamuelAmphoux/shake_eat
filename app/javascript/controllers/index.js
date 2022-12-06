@@ -4,9 +4,6 @@
 
 import { application } from "./application"
 
-import ArchiveController from "./archive_controller"
-application.register("archive", ArchiveController)
-
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
