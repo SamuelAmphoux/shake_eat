@@ -3,12 +3,11 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="locks"
 
 export default class extends Controller {
-  static targets = ["icon", "deck", "parent", "heart"]
+  static targets = ["icon", "deck", "parent", "heart", "menu"]
   static values = { menuId: Number }
 
   connect() {
     console.log("prout")
-
   }
 
   async switchl(e) {

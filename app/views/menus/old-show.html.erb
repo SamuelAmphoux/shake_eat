@@ -1,22 +1,30 @@
-<div class="show_recipes" data-controller="recipes-hidden">
-  <h1>🍛 Menu</h1>
 
-  <div class="menu_bar menu">
-    <div class="menu_bar_settings">
-    <p class="emojie">🍽️</p>
-    <p class="info"><%=@menu.number_of_recipes%></p>
+<%# TODO: <%= link_to "Lock",  menu_menu_recipes_path, method: "POST" %>
+
+<%# TODO: <%= link_to "Unlock", menu_menu_recipe_path, method: "DELETE" %>
+
+<%# TODO: Valider la sélection de recettes/le menu %>
+
+<div class="recipe_card_container" data-controller="recipes-hidden">
+
+  <h1>Menu</h1>
+  <div class="menu-bar">
+    <div class="menu-bar-settings">
+    <%= image_tag 'svg_file/dish_2.svg'%>
+    <p><%=@menu.number_of_recipes%></p>
     </div>
-    <div class="menu_bar_settings">
-      <p class="emojie">👨‍👧‍👦</p>
-      <p class="info"><%=@menu.number_of_people%></p>
+    <div class="menu-bar-settings">
+      <%= image_tag 'svg_file/people.svg'%>
+      <p><%=@menu.number_of_people%></p>
     </div>
-    <div class="menu_bar_settings">
-      <p class="emojie">💶</p>
-      <p class="info"><%=@menu.budget %></p>
+    <div class="menu-bar-settings">
+      <%= image_tag 'svg_file/euro.svg' %>
+      <p><%=@menu.budget %></p>
     </div>
   </div>
 
-  <div class="recipes" data-controller="locks" data-locks-menu-id-value ="<%= @menu.id %>">
+
+  <div data-controller="locks" data-locks-menu-id-value ="<%= @menu.id %>">
 
     <div class="deck_container" data-locks-target="deck" data-action="click->locks#open">
 
@@ -60,17 +68,15 @@
       <% end %>
     </div>
   </div>
-  <div class="menu">
-    <%= link_to root_path do %>
-      <%= image_tag "svg_file/home.svg"%>
-    <% end %>
-        <div class="group_menu">
-        <%= link_to menu_menu_recipes_create_all_path(@menu) do %>
-            <div class="bounce">
-            <h2>Let's Go</h2>
-            <%= image_tag "svg_file/arrowb"%>
-            </div>
-            <%end%>
-        </div>
-    </div>
 </div>
+
+<%= link_to menu_menu_recipes_create_all_path(@menu) do %>
+  <div class="btn-primary">
+    <p class="btn-text">GENERATE</p>
+    <div class="round_btn">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+      </svg>
+    </div>
+  </div>
+<% end %>

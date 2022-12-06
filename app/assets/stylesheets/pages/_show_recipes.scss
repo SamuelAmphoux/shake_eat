@@ -1,0 +1,67 @@
+.show_recipes{
+  width: 100%;
+  height: 100%;
+  color: $color-gray;
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 2rem;
+  }
+
+  .menu_bar {
+    border: 2px solid #EF6B22;
+    z-index: 5;
+    // position: fixed;
+    margin: 5%;
+    width: 90%;
+    border-radius: 30px;
+    height: 60px;
+    top: 5rem;
+    display: flex;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(8.1px);
+    -webkit-backdrop-filter: blur(8.1px);
+    gap: 6rem;
+    align-items: center;
+
+    box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
+
+    .menu_bar_settings {
+      margin-top: 1.2rem;
+      position: relative;
+      .emojie {
+        font-size: 2.2rem;
+        justify-content: center;
+        margin: 0rem;
+      }
+      .info {
+        margin-top: -.8rem;
+        color: black;
+        text-align: center;
+      }
+    }
+
+  }
+
+  .recipes {
+    margin-top: 7rem;
+  }
+
+  .menu {
+    border: 2px solid #EF6B22;
+    width: 90%;
+    .group_menu {
+      gap: 1rem;
+      h2{
+        color:black;
+        margin-top: 0.4rem;
+      }
+      * {
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+}
