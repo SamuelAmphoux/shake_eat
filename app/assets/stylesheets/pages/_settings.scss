@@ -102,33 +102,33 @@ input:focus{
   }
 
 
-.form_text_field{
-  position: absolute;
-  left: 32%;
-  text-align: center;
-  background: transparent;
-  height: 1;
-  font-weight: bold;
-  font-size: 2.5rem;
-  height: 3rem;
-  width: 5rem;
-  border: none;
-}
+  .form_text_field{
+    position: absolute;
+    left: 32%;
+    text-align: center;
+    background: transparent;
+    height: 1;
+    font-weight: bold;
+    font-size: 2.5rem;
+    height: 3rem;
+    width: 11rem;
+    border: none;
+  }
 
-.svg-img-container {
-  border-radius: 3.3rem;
-  width: 3.3rem;;
-  height: 3.3rem;;
-  display: flex;
-  background-color: $color-primary;
-  justify-content: center;
-  align-items: center;
-}
+  .svg-img-container {
+    border-radius: 3.3rem;
+    width: 3.3rem;;
+    height: 3.3rem;;
+    display: flex;
+    background-color: $color-primary;
+    justify-content: center;
+    align-items: center;
+  }
 
-svg {
-  color: #F3EEDC;
-  width: 2.3rem;
-}
+  svg {
+    color: #F3EEDC;
+    width: 2.3rem;
+  }
 }
 
 .menu-bar {
