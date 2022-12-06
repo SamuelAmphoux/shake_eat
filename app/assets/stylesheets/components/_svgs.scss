@@ -1,0 +1,63 @@
+.pork{
+  fill: none;
+  stroke: $color-primary;
+  stroke-width:2;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  stroke-miterlimit:10;
+}
+
+.milk{
+  stroke: $color-primary;
+  stroke-width:0.3;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  stroke-miterlimit:10;
+}
+
+.fish {
+  fill: none;
+  stroke: $color-primary;
+  stroke-width:15;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  stroke-miterlimit:10;
+}
+
+.vege {
+  stroke: $color-primary;
+  stroke-width:0.05;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  stroke-miterlimit:10;
+}
+
+.wheat {
+  stroke: $color-primary;
+  stroke-width:0.05;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  stroke-miterlimit:10;
+}
+
+.gluten {
+  stroke: $color-primary;
+  stroke-width:0.1;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  stroke-miterlimit:10;
+}
+
+.sugar {
+  stroke: $color-primary;
+  stroke-width:1.5;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  stroke-miterlimit:10;
+}
+
+
+// .svg_test {
+//   stroke: $color-primary;
+//   fill: none;
+// }
