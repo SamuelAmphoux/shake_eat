@@ -22,7 +22,7 @@ class MenusController < ApplicationController
     @recipes = @recipes.sample(@menu.number_of_recipes)
 
     respond_to do |format|
-      format.json { render json: @recipes }
+      format.text { render partial: "recipes/recipes", formats: [:html], locals: { recipes: @recipes } }
       format.html # index.html.erb
     end
   end

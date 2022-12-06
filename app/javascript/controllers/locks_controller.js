@@ -1,10 +1,9 @@
 import { Controller } from "@hotwired/stimulus"
-import recipeTemplate from "../templates/recipe.hbs"
 
 // Connects to data-controller="locks"
 
 export default class extends Controller {
-  static targets = ["icon", "btn", "card"]
+  static targets = ["icon", "btn", "card", "recipes"]
   static values = { menuId: Number, recipeNumber: Number, selectedRecipes: Number}
 
   connect() {
@@ -108,22 +107,19 @@ export default class extends Controller {
   getMoreRecipes() {
     fetch(`/menus/${this.menuIdValue}`, {
       headers: {
-        "Content-Type": "application/json",
+        "Accept": "text/plain",
+        "Content-Type": "text/plain",
         "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]').content
       },
     })
-    .then((response) => response.json())
+    .then((response) => response.text())
     .then((data) => {
-      this.cardTargets.forEach((card)=>{
+      this.cardTargets.forEach((card)=> {
         if (card.classList.contains('unlocked')) {
-          console.log("Je suis là");
           card.remove()
         }
       })
-      console.log(data);
-      data.forEach((recipe)=>{
-        console.log((recipeTemplate(recipe)));
-      })
+      this.recipesTarget.insertAdjacentHTML('beforeend', data)
     })
   }
 }
