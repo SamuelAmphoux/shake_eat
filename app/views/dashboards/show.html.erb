@@ -17,7 +17,7 @@
   </div>
   <h2>My recipes of the week</h2>
   <div class="list_recipe">
-    <% @recipes.each do |recipe| %>
+    <% @menu.recipes.each do |recipe| %>
       <div class="recipe">
         <img src="<%= recipe.image_url %>" alt="Recipe image">
         <div class="information">
@@ -30,8 +30,12 @@
 
 
   <div class="menu">
-    <%= image_tag "svg_file/market.svg"%>
-    <%= image_tag "svg_file/home.svg"%>
+    <%= link_to grocery_list_path(@menu) do %>
+      <%= image_tag "svg_file/market.svg"%>
+    <% end %>
+    <%= link_to menu_archive_path(@menu) do %>
+      <%= image_tag "svg_file/home.svg"%>
+    <% end %>
     <%= link_to new_menu_path do %>
       <%= image_tag "svg_file/plate.svg"%>
     <% end %>
