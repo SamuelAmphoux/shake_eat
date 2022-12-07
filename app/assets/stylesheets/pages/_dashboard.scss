@@ -3,16 +3,28 @@
   color: #434343;
   margin-bottom: 6rem;
 
-  h1 {
-    font-size: 2rem;
-    font-weight: 600;
-    margin: 2rem;
+  margin-left: 2rem;
+  margin-top: 2rem;
+  .title {
+    h1 {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 0rem;
+    }
+
+    p {
+      font-size: 1.3rem;
+    }
+
   }
   h2 {
     font-size: 1.5rem;
     font-weight: 600;
-    margin: 2rem;
     margin-top: 4rem;
+  }
+
+  .menu {
+    left: 0rem;
   }
 
   .list_market {
@@ -21,7 +33,6 @@
     position: relative;
     gap: 1rem;
     overflow-x: scroll;
-    padding-left: 1rem;
 
     .market {
       background-color: blue;
@@ -41,7 +52,7 @@
       }
 
       .name {
-        font-size: 0.8rem;
+        font-size: 1.2rem;
         font-weight: 600;
         margin: 0.3rem;
         margin-top: 1rem;
@@ -62,14 +73,29 @@
     .recipe {
       display: flex;
       padding: 0 1rem 1rem 0;
-      margin: 1rem;
+      margin: 1rem 0;
       border-bottom: 2px solid #b0b0b0;
+      width: 90%;
+
+
 
       .information {
+
         margin-left: 1rem;
-        margin-top: 1rem;
-        .price{
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        justify-content: center;
+
+        .name {
+          font-weight: 800;
+          margin-bottom: 0;
+        }
+
+        .star {
+          margin: 0;
           color: $color-primary;
+          font-size: 1.2rem;
         }
       }
 
