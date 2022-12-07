@@ -4,6 +4,7 @@
   font-family: 'Open Sans', sans-serif;
   position: relative;
   overflow: hidden;
+  margin-bottom: 1rem;
 
   .recipe_main {
     img {
@@ -17,19 +18,21 @@
     }
 
     .recipe_title {
-      position: relative;
-      bottom: 35px;
+      position: absolute;
+      bottom: 0;
+      right: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      background-color: $color-primary;
+      background-color: #ef6b22;
       color: $color-secondary;
       height: 2.2rem;
       font-size: 20px;
       font-weight: 800;
       border-radius: 26.6px 0 0 0;
       min-width: 50%;
-      float: right;
+      padding: 0.5rem;
+      margin: 0;
     }
 
     .recipe_picto {
@@ -37,11 +40,12 @@
       display: flex;
       align-items: center;
       background-color: $color-secondary;
-      top: 0.4rem;
-      right: 0.4rem;
+      top: 0rem;
+      right: 0rem;
       height: 2rem;
-      padding: 0 0.4rem;
+      padding: 0 0.6rem;
       border-radius: 0.85rem;
+      margin: 0.4rem;
 
       * {
         color: $color-gray;
@@ -63,7 +67,7 @@
   }
 
   .recipe_description {
-    background-color: $color-secondary;
+    background-color: rgba(255, 255, 255, 0);
     height: 100%;
     font-size: 0.6rem;
     line-height: 21.3px;

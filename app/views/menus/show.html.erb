@@ -1,17 +1,26 @@
 <div class="show_recipes" data-controller="recipes-hidden">
-  <h1>🍛 Menu</h1>
+  <div class="navbar_sort_of">
+    <%= link_to new_menu_path(@menu) do %>
+      <div class="round_btn back">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+          </svg>
+      </div>
+    <% end %>
+    <h1>Menu</h1>
+  </div>
 
-  <div class="menu_bar menu">
+  <div class="settings_recall">
     <div class="menu_bar_settings">
-    <p class="emojie">🍽️</p>
-    <p class="info"><%=@menu.number_of_recipes%></p>
+       <%= image_tag 'svg_file/dish_2.svg'%>
+      <p class="info"><%=@menu.number_of_recipes%> servings</p>
     </div>
     <div class="menu_bar_settings">
-      <p class="emojie">👨‍👧‍👦</p>
-      <p class="info"><%=@menu.number_of_people%></p>
+      <%= image_tag 'svg_file/people.svg'%>
+      <p class="info"><%=@menu.number_of_people%> people</p>
     </div>
     <div class="menu_bar_settings">
-      <p class="emojie">💶</p>
+      <%= image_tag 'svg_file/euro.svg' %>
       <p class="info"><%=@menu.budget %></p>
     </div>
   </div>
@@ -21,14 +30,17 @@
       <%= render "recipes/recipes", recipes: @recipes %>
     </div>
 
-      <button data-locks-target="shuffle" data-action="click->locks#getMoreRecipes">
-        <p class="">New Recipes</p>
+      <button data-locks-target="shuffle" data-action="click->locks#getMoreRecipes" class="shake-btn">
+        <i class="fa-solid fa-arrows-spin"></i>
       </button>
 
     <%= link_to menu_menu_recipes_create_all_path(@menu) do %>
       <div class="btn-primary generate-disabled" data-locks-target="btn">
-        <p class="btn-text">Select Recipes</p>
-        <div class="round_btn">
+        <%# <p class="btn-text">Select Recipes</p> %>
+        <div class="bounce btn-text">
+          <h2>Select Recipes</h2>
+        </div>
+        <div class="arrow_btn">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
           </svg>
@@ -37,17 +49,5 @@
     <% end %>
 
   </div>
-  <div class="menu">
-    <%= link_to root_path do %>
-      <%= image_tag "svg_file/home.svg"%>
-    <% end %>
-        <div class="group_menu">
-        <%= link_to menu_menu_recipes_create_all_path(@menu) do %>
-            <div class="bounce">
-            <h2>Let's Go</h2>
-            <%= image_tag "svg_file/arrowb"%>
-            </div>
-            <%end%>
-        </div>
-    </div>
+
 </div>
