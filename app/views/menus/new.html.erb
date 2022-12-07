@@ -4,16 +4,20 @@
 
 
 <div class="setting-overlay">
-<%= link_to root_path do %>
-  <i class="fa-solid fa-arrow-left"></i>
-<% end %>
+    <%= link_to root_path do %>
+      <div class="round_btn back">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+          </svg>
+      </div>
+    <% end %>
 <!-- créer une modale pour afficher le détail des icones qui apparait lors du hover
 quand hover active la classe active  -->
-<h1>Select your criters !</h1>
+<h1>Select your criteria !</h1>
 
     <%= form_with model: @menu, url: menus_path, method: :post, class:'setting-form' do |form| %>
 
-      <h4> Pour combien de <strong>personnes</strong> fais-tu les courses ?</h4>
+      <h4>For how many <strong>people</strong> you do the grocery shopping ?</h4>
       <div class="setting-select-container">
         <div class="svg-img-container">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -22,7 +26,7 @@ quand hover active la classe active  -->
         </div>
         <%= form.number_field :number_of_people, class:"form_text_field" %>
       </div>
-      <h4> Combien de <strong>recettes</strong> souhaites-tu préparer ?</h4>
+      <h4> How many <strong>recipes</strong> do you want to be happy ?</h4>
       <div class="setting-select-container">
         <div class="svg-img-container">
         <svg xmlns:xlink="http://www.w3.org/1999/xlink" id="Flat" fill="none"  stroke-width="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" height="48" width="48" stroke="currentColor">
@@ -31,7 +35,7 @@ quand hover active la classe active  -->
         </div>
         <%= form.number_field :number_of_recipes, class:"form_text_field" %> <!-- Remplacer par placeholder dans le form-->
       </div>
-      <h4> Quel est ton <strong>budget</strong> ?</h4>
+      <h4> What is your <strong>budget</strong> ?</h4>
       <div class="setting-select-container">
         <div class="svg-img-container">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -42,8 +46,8 @@ quand hover active la classe active  -->
       </div>
 
       <div class="setting-btn-container"  data-controller="inactive-icons-class">
-        <h4>Des  <strong>restrictions</strong> alimentaires ?</h4>
-        <p>Sélectionne les aliments que tu souhaites <strong>exclure</strong> de ton menu!</p>
+        <h4>Some <strong>restrictions</strong> ?</h4>
+        <p>Select what you want to <strong>exclude</strong> from your menu!</p>
 
         <%= form.check_box :pork_free, style: "visibility: hidden" %>
         <%= form.label :pork_free, class: "round_btn setting-btn", data: {
