@@ -19,7 +19,13 @@ class MenusController < ApplicationController
 
     @recipes = @recipes.where(["price <= ?", @menu.budget / (@menu.number_of_people * @menu.number_of_recipes)]) if @menu.budget
 
-    @recipes = @recipes.sample(@menu.number_of_recipes)
+    if @menu.number_of_recipes <= 10
+      @recipes = @recipes.sample(10)
+    elsif @menu.number_of_recipes <= 20
+      @recipes = @recipes.sample(20)
+    else
+      @recipes = @recipes.sample(@menu.number_of_recipes)
+    end
 
     respond_to do |format|
       format.text { render partial: "recipes/recipes", formats: [:html], locals: { recipes: @recipes } }
