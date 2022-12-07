@@ -7,7 +7,7 @@
   h1 {
     color: $color-gray;
     font-weight: bold;
-    margin: 2rem;
+    margin-bottom: 2rem;
   }
 
   strong {
@@ -27,7 +27,7 @@
 
   h4 {
     color:$color-gray;
-    font-weight: bold;
+    font-weight: 550;
     }
 
   p {
@@ -38,24 +38,56 @@
 .menu {
   border: 2px solid #EF6B22;
   width: 90%;
+  animation: animate 2s;
+  background-color: transparent;
+}
 
-  button {
-    border: none;
-    background-color: transparent;
 
-    .group_menu {
-      gap: 1rem;
+// .menu:hover {
+// border:none;
+// animation: animate 0.4s;
+// @keyframes animate {
+//   0%{
+//     transform: rotate(0deg) translateX(0px);
+//   }
+//   5%{
+//     transform: rotate(-2deg) translateX(-2px);
+//   }
+//   15%{
+//     transform: rotate(-5deg) translateX(-5px);
+//   }
+//   20%{
+//     transform: rotate(-7deg) translateX(-7px);
+//   }
+//   30%{
+//     transform: rotate(-10deg) translateX(-10px);
+//   }
+//   75%{
+//     transform: rotate(10deg) translateX(10px);
+//   }
+//   100%{
+//     transform: rotate(15deg) translateX(15px);
+//     }
+//   }
 
-      h2{
-        color:black;
-      }
-      * {
-        align-items: center;
-        justify-content: center;
-      }
+
+button {
+  border: none;
+  background-color: transparent;
+
+  .group_menu {
+    gap: 1rem;
+
+    h2{
+      color:black;
+    }
+    * {
+      align-items: center;
+      justify-content: center;
     }
   }
 }
+
 
 .setting-btn-container {
   display: flex;
