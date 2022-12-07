@@ -34,14 +34,6 @@ class MenuRecipesController < ApplicationController
     redirect_to grocery_list_path
   end
 
-  def list_generator
-    @recipe_ingredients = RecipeIngredient.all
-    @recipe_ingredient = RecipeIngredient.new
-    @recipe_ingredient.recipe = @recipe
-    @recipe_ingredient.ingredient = @ingredient
-    @recipe_ingredient.quantity = @quantity
-  end
-
   private
 
   def menu_recipe_params
