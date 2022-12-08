@@ -129,7 +129,7 @@ export default class extends Controller {
           setTimeout(function(){
             card.remove()
             card.classList.remove('shuffle-btn');
-          }, 400);
+          }, 600);
         }
       })
       this.recipesTarget.insertAdjacentHTML('beforeend', data)
