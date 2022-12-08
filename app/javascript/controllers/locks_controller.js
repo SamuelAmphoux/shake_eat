@@ -73,7 +73,7 @@ export default class extends Controller {
   }
 
   destroyRecipe(recipeId, menuRecipeId, target) {
-    fetch(`/menu_recipes/${this.menuIdValue}`, {
+    fetch(`/menu_recipes/${menuRecipeId}}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
