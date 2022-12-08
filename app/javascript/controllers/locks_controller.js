@@ -13,21 +13,17 @@ export default class extends Controller {
   // Change le cadenas de ouvert à fermé, et inversement
   switch(event) {
     event.preventDefault();
-    const target =  event.currentTarget
-    const recipeId = target.dataset.recipeId
+    const target =  event.currentTarget;
+    const recipeId = target.dataset.recipeId;
     if (target.dataset.method === "post") {
       this.createRecipe(recipeId, target)
       target.parentElement.parentElement.classList.remove('unlocked')
-      setTimeout(function(){
-        target.parentElement.parentElement.classList.add('blurred')
-      },200);
+      target.parentElement.parentElement.classList.add('blurred');
     } else if (target.dataset.method === "destroy") {
       const menuRecipeId = target.dataset.menuRecipeId
       this.destroyRecipe(recipeId, menuRecipeId, target)
       target.parentElement.parentElement.classList.add('unlocked')
-      setTimeout(function(){
-        target.parentElement.parentElement.classList.remove('blurred')
-      }, 200);
+        target.parentElement.parentElement.classList.remove('blurred');
     }
   }
 
