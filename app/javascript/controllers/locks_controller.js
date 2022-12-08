@@ -4,12 +4,10 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
 
-  static targets = ["icon", "btn", "card", "recipes"]
+  static targets = ["icon", "btn", "card", "recipes", "shuffle", "btnLien"]
   static values = { menuId: Number, recipeNumber: Number, selectedRecipes: Number}
 
   connect() {
-    console.log(this.recipeNumberValue);
-
   }
 
   // Change le cadenas de ouvert à fermé, et inversement
@@ -49,6 +47,7 @@ export default class extends Controller {
         this.selectedRecipesValue += 1;
         if (this.selectedRecipesValue === this.recipeNumberValue) {
           this.btnTarget.classList.remove('generate-disabled')
+          this.btnLienTarget.classList.remove("event")
           this.btnTarget.innerHTML = `<div class="btn-text">
           <h2>Get your list</h2>
         </div>
@@ -125,7 +124,12 @@ export default class extends Controller {
     .then((data) => {
       this.cardTargets.forEach((card)=> {
         if (card.classList.contains('unlocked')) {
-          card.remove()
+          card.classList.add('shuffle-btn');
+
+          setTimeout(function(){
+            card.remove()
+            card.classList.remove('shuffle-btn');
+          }, 400);
         }
       })
       this.recipesTarget.insertAdjacentHTML('beforeend', data)

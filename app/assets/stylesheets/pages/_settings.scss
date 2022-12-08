@@ -42,35 +42,6 @@
   background-color: transparent;
 }
 
-
-.menu:hover {
-border:none;
-animation: animate 0.1s;
-
-  @keyframes animate {
-    0% {
-        transform: skewX(-10deg);
-    }
-
-    25% {
-        transform: skewX(10deg);
-    }
-
-    50% {
-        transform: skewX(-10deg);
-    }
-
-    75% {
-        transform: skewX(10deg);
-    }
-
-    100% {
-        transform: skewX(-10deg);
-    }
-  }
-}
-
-
 button {
   border: none;
   background-color: transparent;
@@ -157,13 +128,11 @@ input:focus{
 
 
 .form_text_field{
-  // position: absolute;
-  // left: 32%;
   text-align: center;
   background: transparent;
   height: 1;
   font-weight: bold;
-  font-size: 2.5rem;
+  font-size: 1.8rem;
   height: 3rem;
   width: 7rem;
   border: none;
