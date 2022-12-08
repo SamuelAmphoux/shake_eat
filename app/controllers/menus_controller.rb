@@ -17,7 +17,7 @@ class MenusController < ApplicationController
 
     @recipes = @recipes.where(["dairy_free = ?", @menu.dairy_free?]) if @menu.dairy_free? == true
 
-    @recipes = @recipes.where(["price <= ?", @menu.budget / (@menu.number_of_people * @menu.number_of_recipes)]) if @menu.budget
+    @recipes = @recipes.where(["price <= ?", @menu.budget / (@menu.number_of_people * @menu.number_of_recipes)])
 
     if @menu.number_of_recipes <= 10
       @recipes = @recipes.sample(10)

@@ -8,8 +8,8 @@
       <% end %>
       <div class="market_main">
         <h3 class="market_title"><%= element[:name][0...18].capitalize %></h3>
-        <h2 class="market_weight"><%= (element[:quantity].round * @people)  %> <%= element[:unit] %> </h2>
-        <h3 class="market_price"><%= (element[:price] * @people).round(2) %>€</h3>
+        <h2 class="market_weight"><%= ((element[:quantity].round * @people)/2)  %> <%= element[:unit] %> </h2>
+        <h3 class="market_price"><%= ((element[:price] * @people)/2).round(2) %>€</h3>
       </div>
     </div>
   <% end %>
