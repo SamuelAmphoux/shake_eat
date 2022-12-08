@@ -1,3 +1,12 @@
+<div class="loader" data-controller="type-text" data-type-text-target="loader">
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <div class="content">
+    <lottie-player class="anime" src="https://assets9.lottiefiles.com/packages/lf20_snmohqxj/lottie_step2/data.json"  background="transparent"  speed="1" loop autoplay></lottie-player>
+
+    <h1 data-type-text-target="anime" href="" class="typewrite" data-period="500" data-type='[ "Preheating the oven.", "Calibrating the dishes.", "Optimizing the recipes.", "Selecting the best flavors." ]'></h1>
+  </div>
+</div>
+
 <div class="show_recipes" data-controller="recipes-hidden">
   <div class="navbar_sort_of">
     <%= link_to new_menu_path(@menu) do %>
