@@ -1,3 +1,4 @@
+
 <div class="loader" data-controller="type-text" data-type-text-target="loader">
   <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
   <div class="content">
@@ -8,6 +9,7 @@
 </div>
 
 <div class="show_recipes" data-controller="recipes-hidden">
+
   <div class="navbar_sort_of">
     <%= link_to new_menu_path(@menu) do %>
       <div class="round_btn back">
@@ -39,23 +41,26 @@
       <%= render "recipes/recipes", recipes: @recipes %>
     </div>
 
+    <div class="footer--btn">
       <button data-locks-target="shuffle" data-action="click->locks#getMoreRecipes" class="shake-btn">
         <i class="fa-solid fa-arrows-spin"></i>
       </button>
+      <%= link_to menu_menu_recipes_create_all_path(@menu), class: "grow event", data:{locks_target:"btnLien"} do %>
+        <div class="btn--recipes generate-disabled" data-locks-target="btn">
+          <%# <p class="btn-text">Select Recipes</p> %>
+          <div class="bounce btn-text">
+            <h2>Select Recipes</h2>
+          </div>
+          <div class="arrow_btn">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </div>
+        </div>
+      <% end %>
+    </div>
 
-    <%= link_to menu_menu_recipes_create_all_path(@menu) do %>
-      <div class="btn-primary generate-disabled" data-locks-target="btn">
-        <%# <p class="btn-text">Select Recipes</p> %>
-        <div class="bounce btn-text">
-          <h2>Select Recipes</h2>
-        </div>
-        <div class="arrow_btn">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-          </svg>
-        </div>
-      </div>
-    <% end %>
+
 
   </div>
 

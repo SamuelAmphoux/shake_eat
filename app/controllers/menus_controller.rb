@@ -17,7 +17,7 @@ class MenusController < ApplicationController
 
     @recipes = @recipes.where(["dairy_free = ?", @menu.dairy_free?]) if @menu.dairy_free? == true
 
-    @recipes = @recipes.where(["price <= ?", @menu.budget / (@menu.number_of_people * @menu.number_of_recipes)]) if @menu.budget
+    @recipes = @recipes.where(["price <= ?", @menu.budget / (@menu.number_of_people * @menu.number_of_recipes)])
 
     if @menu.number_of_recipes <= 10
       @recipes = @recipes.sample(10)
@@ -50,7 +50,25 @@ class MenusController < ApplicationController
 
   def grocery_list
     @menu = Menu.find(params[:menu_id])
-    @recipe_ingredients = @menu.recipe_ingredients.all
+    @people = @menu.number_of_people
+    @ingredients = @menu.recipe_ingredients
+    @recipe_ingredients = @menu.ingredients
+
+    @merged_array_hash = @recipe_ingredients.group_by { |h1| h1[:name] }.map do |k, v|
+      if v.count > 1
+        i = 0
+        until i == (v.count - 1)
+          i += 1
+          begin
+            v[0] = v[0].attributes.merge(v[1].attributes) { |key, oldval, newval| (oldval.is_a?(Integer) || oldval.is_a?(Float)) ? oldval + newval : oldval }
+          rescue
+          end
+        end
+        { name: k, unit: v[0]["unit"], image_url: v[0]["image_url"], quantity: v[0]["quantity"], price: v[0]["price"] }
+      else
+        { name: k, unit: v[0][:unit], image_url: v[0][:image_url], quantity: v[0][:quantity], price: v[0][:price] }
+      end
+    end
   end
 
   def archive

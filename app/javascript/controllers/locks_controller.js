@@ -4,12 +4,10 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
 
-  static targets = ["icon", "btn", "card", "recipes"]
+  static targets = ["icon", "btn", "card", "recipes", "btnLien"]
   static values = { menuId: Number, recipeNumber: Number, selectedRecipes: Number}
 
   connect() {
-    console.log(this.recipeNumberValue);
-
   }
 
   // Change le cadenas de ouvert à fermé, et inversement
@@ -20,10 +18,16 @@ export default class extends Controller {
     if (target.dataset.method === "post") {
       this.createRecipe(recipeId, target)
       target.parentElement.parentElement.classList.remove('unlocked')
+      setTimeout(function(){
+        target.parentElement.parentElement.classList.add('blurred')
+      },200);
     } else if (target.dataset.method === "destroy") {
       const menuRecipeId = target.dataset.menuRecipeId
       this.destroyRecipe(recipeId, menuRecipeId, target)
       target.parentElement.parentElement.classList.add('unlocked')
+      setTimeout(function(){
+        target.parentElement.parentElement.classList.remove('blurred')
+      }, 200);
     }
   }
 
@@ -49,6 +53,7 @@ export default class extends Controller {
         this.selectedRecipesValue += 1;
         if (this.selectedRecipesValue === this.recipeNumberValue) {
           this.btnTarget.classList.remove('generate-disabled')
+          this.btnLienTarget.classList.remove("event")
           this.btnTarget.innerHTML = `<div class="btn-text">
           <h2>Get your list</h2>
         </div>
@@ -87,7 +92,6 @@ export default class extends Controller {
                               <i class="fas fa-lock-open"></i>
                             </div>`;
         this.selectedRecipesValue -= 1;
-        console.log(this.selectedRecipesValue);
         if (this.selectedRecipesValue === this.recipeNumberValue) {
           this.btnTarget.classList.remove('generate-disabled')
           this.btnTarget.innerHTML = `<div class="btn-text">
@@ -125,7 +129,12 @@ export default class extends Controller {
     .then((data) => {
       this.cardTargets.forEach((card)=> {
         if (card.classList.contains('unlocked')) {
-          card.remove()
+          card.classList.add('shuffle-btn');
+
+          setTimeout(function(){
+            card.remove()
+            card.classList.remove('shuffle-btn');
+          }, 600);
         }
       })
       this.recipesTarget.insertAdjacentHTML('beforeend', data)

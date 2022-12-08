@@ -1,22 +1,17 @@
 
 <div class="list-container">
   <h1>Your list</h1>
-  <% @recipe_ingredients.each do |element| %>
+  <% @merged_array_hash.each do |element| %>
     <div class="market_card">
-      <% unless element.ingredient.image_url.nil? %>
-      <%= image_tag(element.ingredient.image_url) %>
+      <% unless element[:image_url].nil? %>
+      <%= image_tag(element[:image_url]) %>
       <% end %>
       <div class="market_main">
-        <h3 class="market_title"><%= element.ingredient.name[0...18].capitalize %></h3>
-        <h2 class="market_weight"><%= element.ingredient.quantity.round  %> <%= element.ingredient.unit %> </h2>
-        <h3 class="market_price"><%= element.ingredient.price %>€</h3>
+        <h3 class="market_title"><%= element[:name][0...18].capitalize %></h3>
+        <h2 class="market_weight"><%= ((element[:quantity].round * @people)/2)  %> <%= element[:unit] %> </h2>
+        <h3 class="market_price"><%= ((element[:price] * @people)/2).round(2) %>€</h3>
       </div>
     </div>
-  <% end %>
-
-  <% @sum=0 %>
-  <% @recipe_ingredients.each do |element| %>
-  <% @sum += element.ingredient.price %>
   <% end %>
 
   <div class="list-footer">
@@ -31,6 +26,11 @@
       <i class="fa-solid fa-arrow-right"></i>
     <% end %>
 
+
+  <% @sum=0 %>
+  <% @ingredients.each do |element| %>
+  <% @sum += (element.ingredient.price * @people) %>
+  <% end %>
   <h1 class="total-price">
     Your total is <%= @sum.truncate(2) %>€
   </h1>
