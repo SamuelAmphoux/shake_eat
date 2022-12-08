@@ -33,13 +33,10 @@
         controller et passer le cadenas en verrouillé -->
           <div class="recipe_card unlocked" data-locks-target="card">
             <div class="recipe_main">
-              <div class="recipe_lock" data-locks-target="icon" data-action="click->locks#switch" data-method="post" data-recipe-id="<%= recipe.id %>">
-                <i class="fas fa-lock-open"></i>
+              <div>
               </div>
               <%= image_tag(recipe.image_url) %>
-              <h2 class="recipe_title"
-                  data-action="click->recipes-hidden#toggleDescription"
-                  data-recipe-id="<%= recipe.id %>" ><%= recipe.name.truncate(25) %>
+              <h2 class="recipe_title"><%= recipe.name.truncate(25) %>
               </h2>
               <%= render "components/icon_recipe_content", recipe: recipe %>
             </div>
