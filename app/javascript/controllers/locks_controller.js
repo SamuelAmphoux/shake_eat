@@ -4,7 +4,7 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
 
-  static targets = ["icon", "btn", "card", "recipes", "shuffle", "btnLien"]
+  static targets = ["icon", "btn", "card", "recipes", "btnLien"]
   static values = { menuId: Number, recipeNumber: Number, selectedRecipes: Number}
 
   connect() {
@@ -18,10 +18,16 @@ export default class extends Controller {
     if (target.dataset.method === "post") {
       this.createRecipe(recipeId, target)
       target.parentElement.parentElement.classList.remove('unlocked')
+      setTimeout(function(){
+        target.parentElement.parentElement.classList.add('blurred')
+      },200);
     } else if (target.dataset.method === "destroy") {
       const menuRecipeId = target.dataset.menuRecipeId
       this.destroyRecipe(recipeId, menuRecipeId, target)
       target.parentElement.parentElement.classList.add('unlocked')
+      setTimeout(function(){
+        target.parentElement.parentElement.classList.remove('blurred')
+      }, 200);
     }
   }
 
@@ -86,7 +92,6 @@ export default class extends Controller {
                               <i class="fas fa-lock-open"></i>
                             </div>`;
         this.selectedRecipesValue -= 1;
-        console.log(this.selectedRecipesValue);
         if (this.selectedRecipesValue === this.recipeNumberValue) {
           this.btnTarget.classList.remove('generate-disabled')
           this.btnTarget.innerHTML = `<div class="btn-text">

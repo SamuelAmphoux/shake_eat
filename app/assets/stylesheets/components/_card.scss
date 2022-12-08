@@ -195,11 +195,7 @@
   }
 }
 
-
-particle {
-  border-radius: 50%;
-  left: 0;
-  pointer-events: none;
-  position: fixed;
-  top: 0;
+.blurred {
+  border: 3px solid $color-primary;
+  transition: all 0.2 s linear;
 }
