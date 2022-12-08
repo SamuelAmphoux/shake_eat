@@ -29,7 +29,7 @@
 
   <% @sum=0 %>
   <% @ingredients.each do |element| %>
-  <% @sum += (element.ingredient.price * @people) %>
+  <% @sum += ((element.ingredient.price * @people)/2) %>
   <% end %>
   <h1 class="total-price">
     Your total is <%= @sum.truncate(2) %>€
