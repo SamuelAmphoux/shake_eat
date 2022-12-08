@@ -1,0 +1,53 @@
+.loader{
+  animation-delay: 3.5s;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 9999999999;
+  * { color:#fff; text-decoration: none;}
+  background: rgb(252,140,78);
+  // background: linear-gradient(129deg, rgba(252,140,78,1) 0%, rgba(243,238,220,1) 100%);
+  background: linear-gradient(178deg, rgba(243,238,220,1) 0%, rgba(252,140,78,1) 111%);
+  .content {
+    margin-top: 45%;
+    h1 {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 0rem;
+      color: $color-gray;
+      margin-top: 2rem;
+      margin-left: 2rem;
+
+      strong {
+        color: $color-primary;
+      }
+    }
+
+    span {
+      text-decoration: none;
+      color: $color-gray;
+    }
+
+    .anime {
+      width: 18rem;
+      height: 18rem;
+      margin: 0 auto;
+    }
+  }
+
+  &.disable {
+    animation: poof 2s;
+    animation-fill-mode: forwards;
+
+    @keyframes poof {
+      0% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+        z-index: -1;
+      }
+    }
+  }
+}

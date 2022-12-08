@@ -17,3 +17,6 @@ application.register("locks", LocksController)
 
 import RecipesHiddenController from "./recipes_hidden_controller"
 application.register("recipes-hidden", RecipesHiddenController)
+
+import TypeTextController from "./type_text_controller"
+application.register("type-text", TypeTextController)
